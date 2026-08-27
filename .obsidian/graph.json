@@ -8,31 +8,17 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "file:学科概览",
-      "color": {
-        "a": 1,
-        "rgb": 12720219
-      }
-    },
-    {
-      "query": "file:Ch",
-      "color": {
-        "a": 1,
-        "rgb": 1402304
-      }
-    },
-    {
-      "query": "file:Sec",
-      "color": {
-        "a": 1,
-        "rgb": 3046706
-      }
-    },
-    {
-      "query": "file:概念",
+      "query": "path:seed",
       "color": {
         "a": 1,
         "rgb": 7901340
+      }
+    },
+    {
+      "query": "path:personal",
+      "color": {
+        "a": 1,
+        "rgb": 16727296
       }
     }
   ],

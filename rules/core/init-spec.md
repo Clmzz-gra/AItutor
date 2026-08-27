@@ -41,7 +41,7 @@
   ▼
 ⑤ 生成初始图谱    seed/ 核心概念/节骨架（wikilink 相连）
   ▼
-⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 file: 检索式）
+⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 path: seed/personal 检索式）
   ▼
 输出：seed 目录（可分发，人人可在此基础上搭建）
 ```
@@ -129,10 +129,12 @@
 
 - Obsidian 原生**节点大小由链接数决定**，不支持按类型设大小；通过 3 的层级链接让概览自然最大
 - **颜色分组用检索式配置**（`.obsidian/graph.json` → `colorGroups`）
-- 实测 **`type:` 属性检索式未生效**，改用 **`file:` 文件名检索式**（通用、已验证）
+- **配色规则（强制区分 seed / personal）**：
+  - **seed 类**：低饱和 / 沉稳色，表示共享只读地基
+  - **personal 类**：高饱和 / 鲜艳色，表示个人增量，与 seed 形成明显视觉区分
 - **初始化自动执行**（无需手动）：`python tools/graph-style/configure.py`
-  - 默认配色：学科全景 `#C2185B`／章 `#1565C0`／节 `#2E7D32`／概念 `#78909C`
-  - 脚本用 `file:学科概览` / `file:Ch` / `file:Sec` / `file:概念` 四组检索式，任意学科通用
+  - 默认配色：seed `#78909C`（低饱和蓝灰）／personal `#FF3D00`（高饱和橙红）
+  - 脚本用 `path:seed` / `path:personal` 两组检索式，按目录区分，任意学科通用
 - 也可在 **Obsidian 图视图 → 设置 → 颜色分组** 手动增改（UI 会写回 `graph.json`，格式为 `{"query":"...","color":{"a":1,"rgb":N}}`）
 
 ### 5. 中间文件清理/忽略（重要教训）
@@ -154,7 +156,7 @@
 - [ ] 现成图谱关系（前置/后置/关联）全部转为 wikilink
 - [ ] 0 坏链，无孤立文章节点
 - [ ] 中间文件已忽略（README/textbook/xlsx/base/canvas）
-- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，file: 检索式）
+- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，path: seed/personal 检索式）
 
 
 > **实测结论（2026-08-27）**：直接改 `.obsidian/graph.json` 可能被运行中的 Obsidian 覆盖/不生效；

@@ -5,11 +5,9 @@
     python tools/graph-style/configure.py
 
 效果:
-    写入 .obsidian/graph.json 的 colorGroups（file: 检索式，任意学科通用）:
-      file:学科概览  学科全景（主色）
-      file:Ch        章
-      file:Sec       节
-      file:概念      概念/其余
+    写入 .obsidian/graph.json 的 colorGroups（path: 检索式，任意学科通用）:
+      path:seed      seed 类（低饱和蓝灰，共享只读地基）
+      path:personal  personal 类（高饱和橙红，个人增量）
 """
 import json
 import sys
@@ -18,12 +16,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GRAPH = ROOT / ".obsidian" / "graph.json"
 
-# 配色（新一组：玫红 / 深蓝 / 深绿 / 蓝灰）
+# 配色规则：
+# - seed 类：低饱和 / 沉稳，表示共享只读地基
+# - personal 类：高饱和 / 鲜艳，表示个人增量，与 seed 形成明显视觉区分
 PALETTE = [
-    ("file:学科概览", "#C2185B"),   # 学科全景
-    ("file:Ch",       "#1565C0"),   # 章
-    ("file:Sec",      "#2E7D32"),   # 节
-    ("file:概念",      "#78909C"),   # 概念/其余
+    ("path:seed",      "#78909C"),  # seed：低饱和蓝灰
+    ("path:personal",  "#FF3D00"),  # personal：高饱和橙红
 ]
 
 def rgb(hexstr: str) -> int:
