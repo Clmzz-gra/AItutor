@@ -8,17 +8,101 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:seed",
+      "query": "path:seed file:学科概览",
+      "color": {
+        "a": 1,
+        "rgb": 11563386
+      }
+    },
+    {
+      "query": "path:seed file:Ch",
+      "color": {
+        "a": 1,
+        "rgb": 6060697
+      }
+    },
+    {
+      "query": "path:seed file:Sec",
+      "color": {
+        "a": 1,
+        "rgb": 7048811
+      }
+    },
+    {
+      "query": "path:seed file:概念",
       "color": {
         "a": 1,
         "rgb": 7901340
       }
     },
     {
-      "query": "path:personal",
+      "query": "path:personal file:学科概览",
       "color": {
         "a": 1,
-        "rgb": 16727296
+        "rgb": 16717636
+      }
+    },
+    {
+      "query": "path:personal file:Ch",
+      "color": {
+        "a": 1,
+        "rgb": 2718207
+      }
+    },
+    {
+      "query": "path:personal file:Sec",
+      "color": {
+        "a": 1,
+        "rgb": 51283
+      }
+    },
+    {
+      "query": "path:personal file:概念",
+      "color": {
+        "a": 1,
+        "rgb": 16748800
+      }
+    },
+    {
+      "query": "path:personal file:论文",
+      "color": {
+        "a": 1,
+        "rgb": 13959417
+      }
+    },
+    {
+      "query": "path:personal file:思考",
+      "color": {
+        "a": 1,
+        "rgb": 16739584
+      }
+    },
+    {
+      "query": "path:personal file:提问",
+      "color": {
+        "a": 1,
+        "rgb": 6627327
+      }
+    },
+    {
+      "query": "path:personal file:习题",
+      "color": {
+        "a": 1,
+        "rgb": 58879
+      }
+    },
+    {
+      "query": "path:personal file:作业",
+      "color": {
+        "a": 1,
+        "rgb": 7798531
+      }
+    },
+    {
+      "query": "path:personal file:问题",
+      "color": {
+        "a": 1,
+        "rgb": 16056407
       }
     }
   ],
@@ -32,6 +116,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.5087618855792438,
+  "scale": 1.4019828977760582,
   "close": false
 }

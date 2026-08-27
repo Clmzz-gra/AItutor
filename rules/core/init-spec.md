@@ -41,7 +41,7 @@
   ▼
 ⑤ 生成初始图谱    seed/ 核心概念/节骨架（wikilink 相连）
   ▼
-⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 path: seed/personal 检索式）
+⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 path + file 检索式）
   ▼
 输出：seed 目录（可分发，人人可在此基础上搭建）
 ```
@@ -129,12 +129,14 @@
 
 - Obsidian 原生**节点大小由链接数决定**，不支持按类型设大小；通过 3 的层级链接让概览自然最大
 - **颜色分组用检索式配置**（`.obsidian/graph.json` → `colorGroups`）
-- **配色规则（强制区分 seed / personal）**：
-  - **seed 类**：低饱和 / 沉稳色，表示共享只读地基
-  - **personal 类**：高饱和 / 鲜艳色，表示个人增量，与 seed 形成明显视觉区分
+- **配色规则（强制区分 seed / personal + 层级/类型）**：
+  - **seed 类**：低饱和 / 沉稳色，表示共享只读地基；按层级区分色相
+  - **personal 类**：高饱和 / 鲜艳色，表示个人增量；按文章类型区分色相
 - **初始化自动执行**（无需手动）：`python tools/graph-style/configure.py`
-  - 默认配色：seed `#78909C`（低饱和蓝灰）／personal `#FF3D00`（高饱和橙红）
-  - 脚本用 `path:seed` / `path:personal` 两组检索式，按目录区分，任意学科通用
+  - 默认配色：
+    - seed：学科全景 `#B0717A`／章 `#5C7A99`／节 `#6B8E6B`／概念 `#78909C`
+    - personal：学科全景 `#FF1744`／章 `#2979FF`／节 `#00C853`／概念 `#FF9100`／论文 `#D500F9`／思考 `#FF6D00`／提问 `#651FFF`／习题 `#00E5FF`／作业 `#76FF03`／问题 `#F50057`
+  - 脚本用 `path:seed` / `path:personal` 结合 `file:` 检索式，按目录 + 文件名区分，任意学科通用
 - 也可在 **Obsidian 图视图 → 设置 → 颜色分组** 手动增改（UI 会写回 `graph.json`，格式为 `{"query":"...","color":{"a":1,"rgb":N}}`）
 
 ### 5. 中间文件清理/忽略（重要教训）
@@ -156,7 +158,7 @@
 - [ ] 现成图谱关系（前置/后置/关联）全部转为 wikilink
 - [ ] 0 坏链，无孤立文章节点
 - [ ] 中间文件已忽略（README/textbook/xlsx/base/canvas）
-- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，path: seed/personal 检索式）
+- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，path + file 检索式）
 
 
 > **实测结论（2026-08-27）**：直接改 `.obsidian/graph.json` 可能被运行中的 Obsidian 覆盖/不生效；

@@ -18,7 +18,7 @@
 | `ci-demo` | 概率论与数理统计 | 置信区间 | 待建 |
 | `mc-demo` | 概率论与数理统计 | 蒙特卡洛 | 待建 |
 
-| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path: seed/personal 检索式） | `tools/graph-style/configure.py` |
+| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path + file 检索式，seed/personal × 层级/类型） | `tools/graph-style/configure.py` |
 
 ## 技术栈
 
