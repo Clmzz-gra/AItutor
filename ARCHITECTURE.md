@@ -83,15 +83,15 @@
 | **通用讲解** | 知识脉络教学法 | `.dsh/skills/tutor/` |
 | **可视化交互生成** | 演示工具生成规范 | `.dsh/skills/visualization-interaction-builder/` |
 
-**核心判定标准**：换一门学科（概率论→有机化学→历史）**不需要改**的模块，就是核心。
+**核心判定标准**：换一门学科（雅思→有机化学→历史）**不需要改**的模块，就是核心。
 
 ### 4.2 学科规则（拓展 · 每学科一个子目录）
 
-| 模块 | 说明 | 概率论实例 |
+| 模块 | 说明 | 雅思实例 |
 |------|------|-----------|
-| **学科配置 config** | 学习依赖 + 思考方式（非课程对应） | `rules/subjects/概率论与数理统计/config.md` |
-| **学科案例 case** | 教材、课程结构、应用计划 | `rules/subjects/概率论与数理统计/case.md` |
-| **学科能力地图 capabilities** | 通用 AI 维度 + 该学科实例 | `rules/subjects/概率论与数理统计/capabilities.md` |
+| **学科配置 config** | 学习依赖 + 思考方式（非课程对应） | `rules/subjects/雅思/config.md` |
+| **学科案例 case** | 教材、课程结构、应用计划 | `rules/subjects/雅思/case.md` |
+| **学科能力地图 capabilities** | 通用 AI 维度 + 该学科实例 | `rules/subjects/雅思/capabilities.md` |
 | **演示工具规范 demo-spec** | 该学科要做哪些演示工具（清单） | `rules/subjects/{subject}/demo-spec.md`（通用生成规范见 `.dsh/skills/visualization-interaction-builder/SKILL.md`） |
 
 **学科配置聚焦**（不是课程对应）：
@@ -171,8 +171,8 @@ assets/{subject}/
 | `.dsh/skills/visualization-interaction-builder/` | 🟦 核心规则 | 可视化交互生成 |
 | `templates/` | 🟦 核心规则 | 通用模板框架 |
 | `rules/core/capabilities.md` | 🟦 核心规则 | 通用 AI 能力维度框架 |
-| `rules/subjects/概率论与数理统计/capabilities.md` | 🟨 学科规则 | 概率论能力地图 |
-| `rules/subjects/概率论与数理统计/case.md` | 🟨 学科规则 | 概率论案例 |
+| `rules/subjects/雅思/capabilities.md` | 🟨 学科规则 | 雅思能力地图 |
+| `rules/subjects/雅思/case.md` | 🟨 学科规则 | 雅思案例 |
 | `tools/` | 🟨 资产 | 工具脚本（学习画像等）；演示工具在各学科 `personal/demos/` |
 | `guide/` | 🟦 核心规则 | 学生/助教引导（通用） |
 | `maintenance/` | — | 维护规范（规则 + 自检 + 登记表） |
@@ -184,9 +184,9 @@ assets/{subject}/
 
 ## 9. 待办（架构落地）
 
-- [x] 拆分 `method/ai-capabilities.md` → `rules/core/capabilities.md` + `rules/subjects/概率论与数理统计/capabilities.md`
+- [x] 拆分 `method/ai-capabilities.md` → `rules/core/capabilities.md` + `rules/subjects/雅思/capabilities.md`
 - [x] 拆分 `method/demo-builder.md` → 归档，演示规范收敛到 `.dsh/skills/visualization-interaction-builder/`
-- [x] 归位 `cases/概率论与数理统计.md` → `rules/subjects/概率论与数理统计/case.md`
+- [x] 建立学科案例规范（如 `rules/subjects/雅思/case.md`）
 - [x] 收敛合并文档 → 归档 PROFESSOR-PACK/TECHNICAL/CHANGELOG，README 重写为单一入口
 - [x] 建立 `init-spec` 初始化规范（基于教材，含 MinerU/LaTeX/Python 通用依赖）
 - [x] 建立 `index-format`（`_index.md`）→ 已归档（不设索引，2026-08-27）
@@ -194,8 +194,8 @@ assets/{subject}/
 - [x] 建立 harness 抽象层（interface + dsh/trae/claude-code/codex adapters）
 - [x] 建立 `assets/` 资产层结构（seed + personal）
 - [x] 建立 `curriculum` 课程大纲模板（老师开课前写）
-- [x] 概率论 seed 初始化（现成知识图谱导入，含能力覆盖矩阵）
-- [x] 演示工具（clt-demo 结构 + 核心采样逻辑）
+- [x] 创建雅思学科包（`rules/subjects/雅思/` + `assets/雅思/` 结构）
+- [x] 演示工具规范与跨学科索引（tools/README.md）
 - [x] 学生/助教引导完善（guide/学生使用指南 + 助教手册）
 - [x] 管线状态机规范（rules/core/state-machine.md）→ 已归档（五阶段残留）
 - [x] 管线状态机实现（tools/state-machine/pipeline.py）→ 已归档（五阶段残留）

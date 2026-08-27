@@ -9,14 +9,10 @@
 
 | 工具 | 学科 | 演示 | 状态 |
 |------|------|------|------|
-| `lebesgue-riemann-demo` | 实变函数与泛函分析 | 勒贝格 vs 黎曼积分对比 | ✅ 已建 |
-| `cantor-set-demo` | 实变函数与泛函分析 | 康托尔集构造 | ✅ 已建 |
-| `clt-demo` | 概率论与数理统计 | 中心极限定理（招牌） | ✅ 已建 |
-| `lln-demo` | 概率论与数理统计 | 大数定律 | 待建 |
-| `dist-explorer` | 概率论与数理统计 | 分布探索器 | 待建 |
-| `ht-demo` | 概率论与数理统计 | 假设检验 | 待建 |
-| `ci-demo` | 概率论与数理统计 | 置信区间 | 待建 |
-| `mc-demo` | 概率论与数理统计 | 蒙特卡洛 | 待建 |
+| `ielts-vocab-map` | 雅思 | 同义替换/场景词图谱 | 待建 |
+| `writing-structure-builder` | 雅思 | 写作结构生成器（小作文/大作文） | 待建 |
+| `speaking-practice-timer` | 雅思 | 口语限时练习 / Part 2 计时 | 待建 |
+| `listening-dictation-tool` | 雅思 | 听力精听 / 听写工具 | 待建 |
 
 | `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（file: 检索式） | `tools/graph-style/configure.py` |
 

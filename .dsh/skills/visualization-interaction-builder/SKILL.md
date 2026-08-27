@@ -21,7 +21,7 @@ description: >
 
 ## 项目放置位置
 
-- **演示工具放对应学科的 `personal/demos/` 下**：`assets/{subject}/personal/demos/<demo>-tool/`（如 `assets/实变函数与泛函分析/personal/demos/lebesgue-riemann-demo/`）。
+- **演示工具放对应学科的 `personal/demos/` 下**：`assets/{subject}/personal/demos/<demo>-tool/`（如 `assets/雅思/personal/demos/ielts-vocab-demo/`）。
 - 每个工具一个独立子目录，**独立可运行**（不互相依赖）。
 - 新增工具 → 在对应学科 `personal/demos/` 下建目录，并在该学科 `personal/README.md` 登记一行（工具/演示/状态）。
 - 非演示类工具（脚本/分析，如学习画像）才放 `tools/`。
@@ -156,8 +156,7 @@ pause
 - 验收补充：收敛曲线有值（迭代至少推进 10 步以上才允许结束）
 
 ### 拓展 B：学科演示（按学科挂载）
-- 实变泛函：勒贝格积分 vs 黎曼积分对比、康托尔集构造、简单函数逼近
-- 概率论：CLT / 大数定律（见 `assets/概率论与数理统计/personal/demos/clt-demo/`）
+- 雅思：同义替换/词汇图谱、写作结构生成器、口语限时练习
 - 各学科要做的演示工具清单 → `rules/subjects/{subject}/demo-spec.md`（可选）
 
 ## 与项目其他机制的配合
