@@ -80,7 +80,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 **准备环境**
 
-1. Install **Obsidian** (1.12.7+), open the project root as your vault — graph, articles and notes are visualized here. Enable **Obsidian CLI** under **Settings → About → Command line interface**, follow the registration prompt, restart your terminal, then verify with `obsidian help`.
+1. 安装 **Obsidian**（1.12.7+），将项目根目录作为 vault 打开——图谱、文章和笔记都会在这里可视化；启用 **Obsidian CLI**（官方原文）：
+   > Enable **Obsidian CLI** under **Settings → About → Command line interface**, follow the registration prompt, restart your terminal, then verify with `obsidian help`.
+   按提示注册后重启终端，验证 `obsidian help` 可正常输出。
 2. 安装任一支持的 harness（DeepSeek / Claude Code / Codex / Trae）。
 3. 克隆本项目到自己的电脑。
 
