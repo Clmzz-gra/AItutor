@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "file:学科概览",
+      "color": {
+        "a": 1,
+        "rgb": 12720219
+      }
+    },
+    {
+      "query": "file:Ch",
+      "color": {
+        "a": 1,
+        "rgb": 1402304
+      }
+    },
+    {
+      "query": "file:Sec",
+      "color": {
+        "a": 1,
+        "rgb": 3046706
+      }
+    },
+    {
+      "query": "file:概念",
+      "color": {
+        "a": 1,
+        "rgb": 7901340
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.5087618855792438,
+  "close": false
+}

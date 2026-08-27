@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Obsidian
+/.obsidian/workspace.json
+
+# Temporary files
+_temp/
+_scratch/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Personal notes (不要提交学生个人学习笔记)
+**/math/*/第*章*.md
+**/math/*/theorems.md
+**/math/*/problems.md
+**/math/*/_index.md
+**/math/*/_overview.md
+**/learning-profile.json
+
+# 但保留模板和案例
+!templates/
+!cases/
+
+
+# 资产（学生个人学习内容 + 教材 OCR，不公开上传 GitHub）
+# 仅保留占位结构（README + .gitkeep），实际内容不跟踪
+assets/**
+!assets/README.md
+!assets/**/
+!assets/**/.gitkeep
+
+# 归档 / 会话日志 / 演示临时 vault（不上传）
+_archive/*
+!_archive/README.md
+_session/
+_demo-vault/
+
+# 项目维护目录（内部维护规范/登记/测试报告，不上传）
+maintenance/
+
+# Checkpoints（学生个人学习快照/资产，不上传）
+_checkpoints/
+
+# 个人想法草稿（不上传）
+设计上的一些想法.txt

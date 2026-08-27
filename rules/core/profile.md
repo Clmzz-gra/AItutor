@@ -1,0 +1,54 @@
+# 学习画像系统（profile）
+
+> 通用行为追踪，分析学习风格。核心规则 · 学科无关。
+> 数据存 `assets/{subject}/personal/profiles/`。
+> 脚本：`tools/learning-profile/analyze.py`（程序化，不依赖 AI 统计）
+
+## 关键设计：seed 与增量分开算
+
+- **seed 基础图谱**（现成/教材初始化）是共享地基，**不计入画像**
+- 画像基于**学生增量图谱**（`personal/`）——学期初增量少是正常的
+- 输出会显示"增量占比"，反映学生相对 seed 的成长
+
+## 画像维度（程序化）
+
+| 维度 | 数据源 | 说明 |
+|------|--------|------|
+| **原始图谱** | 增量图谱（wikilink 节点 + 边） | 图结构本身，画像的源头（Obsidian 原生查看） |
+| **学习类型** | 图结构（节点/链接/深度） | 深挖/广撒/关联/纵深/均衡 |
+| **兴趣焦点** | **只看图结构**（覆盖最多增量节点的根/枢纽） | 学生兴趣集中点 |
+| **生长形态** | 宽度/分支度 | 链式深挖 vs 扇形展开 |
+| **双链（互链）** | A↔B 互链数 | 双链多 = 图谱更像网 |
+| **学习节奏** | git TOPIC 时间戳 | 学习频率/跨度 |
+
+> **数据源 = wikilink + frontmatter 就够用**（用户定版）。
+> **无 `_index.md`**：不依赖索引文件，直接扫 `personal/` 目录下文章。
+
+## 用法
+
+```bash
+python tools/learning-profile/analyze.py \
+  --personal assets/{subject}/personal \
+  --seed assets/{subject}/seed \
+  --checkpoints _checkpoints
+```
+
+## 学习类型（⚠ 阈值待校准）
+
+> 判定规则见 **`rules/core/decision-trees.md`**（唯一来源，此处不重复）。
+> 未实测，阈值是初稿，需真实数据校准；**非互斥**，符合条件的都算。
+
+## 隐私
+- 画像数据在 `personal/profiles/`（学生个人）
+- 学生**可选提交**（呼应本地运行 + 数据采集架构）
+
+## 周报模板
+
+> 模板：`templates/weekly-report-template.md`（程序化数据 + AI 解读）。
+> 生成方式：跑 `analyze.py` 取各维度数据 → 填入模板 → AI 补充"下周建议"。
+
+## 待细化
+- [x] 学习类型判定（程序化，阈值待校准）
+- [x] 兴趣焦点 / 生长形态（图结构）
+- [x] 学习节奏（git 时间戳）
+- [ ] 与讲解策略的联动
