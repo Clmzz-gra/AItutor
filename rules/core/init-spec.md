@@ -143,11 +143,11 @@
 
 - Obsidian `userIgnoreFilters` 的 **`**` 通配不可靠**（README/part1 仍入图）
 - 必须用**显式路径**：根文件写文件名，目录写 `folder/`，例如：
-  - `README.md`、`CLAUDE.md`、`AGENTS.md`、`ARCHITECTURE.md`
+  - `README.md`、`CHANGELOG.md`、`CLAUDE.md`、`AGENTS.md`、`ARCHITECTURE.md`
   - `.claude/` `.codex/` `.trae/` `rules/` `templates/` `guide/` `tools/` `maintenance/` `_archive/` `_session/` `_checkpoints/` `_demo-vault/`
   - `assets/README.md`、`assets/{学科}/seed/README.md`、`assets/{学科}/seed/textbook/`
   - `未命名.canvas`、`未命名.base`
-- 图谱中只应出现文章节点（Ch/Sec/概念/学科概览）；README、textbook、json、base、canvas 全部忽略；xlsx 等版权源文件导入后删除
+- 图谱中只应出现文章节点（Ch/Sec/概念/学科概览）；README、CHANGELOG、textbook、json、base、canvas 全部忽略；xlsx 等版权源文件导入后删除
 - 每次初始化后做“图谱卫生检查”，新中间文件类型 → 加入本文件清单 + `.obsidian/app.json`
 
 ### 6. 初始化验收（含本次新增）
