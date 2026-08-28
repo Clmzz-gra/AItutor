@@ -3,6 +3,7 @@
 > 官方命令行工具，Command-line control of Obsidian：<https://obsidian.md/cli>
 > 面向 **AI harness / 自动化脚本 / 高级用户**；不绑定具体项目——任何依赖 Obsidian vault 的项目可直接复制或链接本文。
 > 本文所有命令均在 **Windows 11 + Git Bash + Obsidian 1.13.7（installer 1.12.7）** 实测通过（2026-08-29）。
+> 本仓库内的用法唯一来源（M5）：其他文件只引用，不复制命令细节。
 
 ## 1. 前置条件
 
@@ -14,6 +15,8 @@
 obsidian help      # 输出命令全表即成功（stderr 里可能有无害的 libpng warning，见 §5）
 obsidian version   # 如：1.13.7 (installer 1.12.7)
 ```
+
+> Obsidian 桌面端需处于运行状态；若未运行，第一条命令会自动启动它。
 
 ## 2. 核心概念（先读，避免踩坑）
 
@@ -150,7 +153,8 @@ def check_links(vault: str, rel_path: str) -> str:
 
 ---
 
-**本仓库（AItutor）内的引用点**：
+**本仓库（ai-study-method / AItutor）内的引用点**：
 
-- 初始化自动化定位：`rules/core/init-spec.md`（"初始化自动化应优先使用官方 CLI"）
+- 规则指针：`AGENTS.md` §三·流程引用表（Obsidian CLI 用法行）+ §四·工作方式（Obsidian 优先）
+- 初始化规范：`rules/core/init-spec.md`（依赖清单 + 初始化自动化策略；CLI 用法细节已收敛到本文）
 - 工具索引：`tools/README.md`

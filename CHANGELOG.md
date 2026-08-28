@@ -1,10 +1,19 @@
 # Changelog
 
-## 未发布
+## 0.2.3 — 2026-08-29
 
-### 工具与文档
-- 新增 `tools/obsidian-cli.md`：Obsidian 官方 CLI 跨项目通用使用指南——命令速查、AI 创建笔记标准回路、Python 调用模板、实测踩坑（Obsidian 1.13.7 逐条验证）
-- `init-spec.md`、`tools/README.md` 挂接该指南指针
+### 新能力
+- 集成 Obsidian CLI 用法规范（`tools/obsidian-cli.md`，实测 Obsidian 1.13.7）：命令速查、全库体检（unresolved / orphans / deadends）、AI 建笔记标准回路、踩坑清单、Python 调用模板
+
+### 规则
+- AGENTS.md 工作方式新增：**中文优先**（面向中文用户，对话/文章/文档/提交信息全链路简体中文）、**Obsidian 优先**（vault 操作优先 CLI，建笔记按标准回路）
+- init-spec §7 原 CLI 命令示例收敛为指针（M5 单一来源），移除本机环境状态记录
+
+### 适配
+- 中文优先 / Obsidian 优先提升为**注入级规则**：CLAUDE.md / `.codex/` / `.trae/` 入口的强制工作方式与指针表同步，五个 harness 开场即生效
+
+### 其他
+- README 可用功能表 / 结构树 / `tools/README.md` 索引登记 Obsidian CLI 指南
 
 ## 0.2.2 — 2026-08-29
 
