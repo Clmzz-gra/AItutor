@@ -66,3 +66,6 @@ _checkpoints/
 
 # 雅思 seed 占位文件（仅保留初始化形式，个人增量仍不跟踪）
 !assets/雅思/seed/*.md
+
+# 外部参考资料（第三方仓库克隆，不上传）
+_references/
