@@ -16,6 +16,10 @@
 
 | `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path + file 检索式，seed/personal × 层级/类型） | `tools/graph-style/configure.py` |
 
+## 通用工具文档
+
+- **`obsidian-cli.md`** — Obsidian 官方 CLI 使用指南（**跨项目通用**）：命令速查、AI 创建笔记标准回路（防重→创建→读回→链接校验）、Python 调用模板、实测踩坑
+
 ## 技术栈
 
 - Streamlit（交互界面）+ Plotly/Matplotlib（实时绘图）+ NumPy/SciPy（计算）

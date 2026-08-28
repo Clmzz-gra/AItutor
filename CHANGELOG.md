@@ -1,5 +1,11 @@
 # Changelog
 
+## 未发布
+
+### 工具与文档
+- 新增 `tools/obsidian-cli.md`：Obsidian 官方 CLI 跨项目通用使用指南——命令速查、AI 创建笔记标准回路、Python 调用模板、实测踩坑（Obsidian 1.13.7 逐条验证）
+- `init-spec.md`、`tools/README.md` 挂接该指南指针
+
 ## 0.2.2 — 2026-08-29
 
 ### 规则增强（借鉴 DeepTutor 工程设计）

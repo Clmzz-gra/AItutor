@@ -24,6 +24,7 @@
 >
 > 初始化自动化应**优先使用官方 CLI**；同时保留已验证的本地方式：直接读写 `.obsidian/*.json` 配置 + 文件系统（如 `tools/graph-style/configure.py`）、`obsidian://` URI。
 > **不引入第三方非官方 CLI / REST API 作为硬依赖**。
+> **CLI 命令速查、AI 创建笔记标准回路、Python 调用模板与实测踩坑：`tools/obsidian-cli.md`**（已在本机逐条验证）。
 
 ## 初始化流程
 
