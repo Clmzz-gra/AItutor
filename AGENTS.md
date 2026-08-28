@@ -65,6 +65,7 @@
 | **初始化规范** | `rules/core/init-spec.md` | 需要初始化学科时 |
 | **Git 管理** | `rules/core/git-workflow.md` | 提交/检索/分支时 |
 | **学习画像** | `rules/core/profile.md` | 生成画像/调整策略时 |
+| **Obsidian CLI 用法** | `tools/obsidian-cli.md` | vault 操作（文章读写/搜索/坏链体检/图谱/展示）时 |
 
 **通用流程**：先查 git 话题（未闭合先处理）→ 按需读规则 → 执行（先 checkpoint/再升级）→ 文章挂链 → git 提交。
 
@@ -77,3 +78,5 @@
 3. **调度而非代劳**：讲解交给 `tutor`，演示交给 `visualization-interaction-builder`
 4. **记录优先**：任何新知识先落 checkpoint，再继续
 5. **不确定先问**：AI 不确定时一律咨询人类，不得擅自操作
+6. **中文优先**：面向中文用户——对话回复、文章、文档、提交信息默认简体中文；专业术语首次出现附中文解释或自然语言读法；引用外文材料时以中文转述
+7. **Obsidian 优先**：vault 操作（文章读写、搜索、坏链/孤儿体检、图谱配置、界面展示）优先用 Obsidian CLI，用法唯一来源 `tools/obsidian-cli.md`；AI 创建笔记按其 §4 标准回路（防重 → 创建 → 读回 → 链检 → 全库坏链）

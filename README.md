@@ -49,6 +49,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 **多 harness 适配**
 同一套规则通过 interface + adapters 跑在 DeepSeek / Claude Code / Codex / Trae / ZCode 上（ZCode 原生读 `AGENTS.md`，免指针），入口只放指针引向全量文件。
 
+**面向中文用户**
+规则、对话、文章、提交信息全链路中文优先；专业术语附中文解释，引用外文材料以中文转述。
+
 **学习画像程序化**
 基于学生增量图谱程序化分析学习类型、兴趣焦点、生长形态，不依赖 AI 主观统计。
 
@@ -67,6 +70,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 可视化演示工具 | 教学演示工具生成规范（core/ui/utils 三层 + 自检流程） | `.dsh/skills/visualization-interaction-builder/` |
 | 学习画像 | 程序化分析学习类型/兴趣焦点/生长形态 | `tools/learning-profile/analyze.py` |
 | 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae / ZCode（原生读 `AGENTS.md`） | `.dsh/` `.claude/` `.codex/` `.trae/` + 根 `AGENTS.md` |
+| Obsidian CLI 集成 | vault 读写/搜索/坏链体检统一用法 + AI 建笔记标准回路 | `tools/obsidian-cli.md` |
 | 模板框架 | 10 类文章模板 + 周报 | `templates/` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
@@ -163,7 +167,7 @@ AItutor/
 │   └── subjects/                #   学科规则（每学科一个子目录）
 ├── templates/                   # 通用模板框架
 ├── guide/                       # 学生/助教引导
-├── tools/                       # 工具脚本（学习画像等）
+├── tools/                       # 工具脚本（学习画像、图谱配色、Obsidian CLI 指南）
 ├── assets/                      # 学科资产层（seed 只读地基 + personal 学生增量；仅占位结构，实际内容本地）
 │   └── {学科}/                  #   每学科一个子目录（seed/textbook + personal/notes...）
 └── .claude/ .codex/ .trae/      # 各 harness 指针注入入口（ZCode 原生读 AGENTS.md，免目录）

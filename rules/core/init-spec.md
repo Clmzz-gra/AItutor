@@ -165,40 +165,10 @@
 > 用 **`obsidian eval` + `app.vault.adapter`** 让 Obsidian 自己读写 `graph.json` 可**实时生效且不被覆盖**（已验证 `ok:4`）。
 > 初始化配色建议：`tools/graph-style/configure.py` 写文件 + `obsidian eval` 触发重载（或直接用 eval 写回）。
 
-### 7. Obsidian CLI（官方，文档实测 2026-08-27）
+### 7. Obsidian CLI（用法唯一来源：`tools/obsidian-cli.md`）
 
-> 来源：https://obsidian.md/cli（Obsidian CLI - Obsidian Help）
+> CLI 用法细节已收敛到 **`tools/obsidian-cli.md`**（实测 2026-08-29，Obsidian 1.13.7）：启用与验证、核心概念（多 vault / `path=` 优先 / 转义）、命令速查、全库体检（`unresolved` / `orphans` / `deadends`）、AI 建笔记标准回路、踩坑清单与 Python 调用模板。本节原先的命令示例停止维护（M5 单一来源）。
 
-**前置要求**
-- Obsidian **installer 1.12.7+**（Windows；macOS/Linux 详见官方页）
-- Obsidian 桌面端**必须运行**；若未运行，第一条命令会自动启动它
-
-**启用与注册**
-1. Settings → About → enable **Command line interface**, then follow the prompt to register the CLI
-2. 按提示注册 CLI（自动加入用户 PATH）
-3. **重启终端**（PATH 生效）
-4. Windows：installer 会在 Obsidian.exe 同目录添加 terminal redirector
-
-**常用命令（与我们初始化相关）**
-```bash
-obsidian help                     # 帮助
-obsidian vault="My Vault" ...     # 指定 vault（必须是第一个参数）
-obsidian create name="Note" content="Hello" open overwrite   # 创建文章
-obsidian search query="关键词"      # 全库搜索
-obsidian read file=某文章          # 读取文章（file= 按 wikilink 解析）
-obsidian tags counts               # 标签统计
-obsidian eval code="app.vault.getFiles().length"   # 运行 JS
-```
-
-**参数/标志**
-- 参数：`parameter=value`；值含空格用引号
-- 标志：`open`、`overwrite`（布尔开关）
-- 输出复制：任意命令加 `--copy`
-
-**已知环境状态（2026-08-27，已实测，本机示例）**
-- 已开启「Command line interface」设置 ✅
-- 已安装 Obsidian（含 terminal redirector + Obsidian.exe）✅
-- 用户 PATH 已注册 `obsidian` CLI ✅
-- 实测：`obsidian help` 输出正常（新开终端后可用）✅
-- 使用真实命令前需保证 Obsidian 桌面端正在运行
+- 初始化批量操作要点：多 vault 环境所有命令必须显式 `vault=<名称>`，写库前先 `obsidian vaults verbose` 确认目标库
+- 图谱样式实时生效做法见上文「实测结论」（`obsidian eval` + `app.vault.adapter`）
 
