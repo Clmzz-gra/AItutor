@@ -27,12 +27,21 @@
 
 ## 生成通用校验（每篇文章）
 
-1. 命名符合 10 类规范
+1. 命名符合已注册文章类型规范（内置 10 类或扩展类型）
 2. frontmatter 必填（type / formal / subject / created / updated）
 3. 至少 1 个 wikilink（无孤立文章）
 4. 无坏链（链接目标存在）
 5. 类型不变（无转化关系）
 6. AI 不确定 → 咨询人类
+## 新增文章类型扩展步骤（二次开发）
+
+1. 在 `asset-spec.md §一·五` 登记新类型定义
+2. 在本表新增一行生成依赖
+3. 新建 `templates/{type}-template.md`
+4. 在 `tools/graph-style/configure.py` 增加对应配色 query
+5. 在 `asset-spec.md §四` 补充该类型结构 + 校验
+6. 更新 README / 导航（如需要）
+7. 登记到 `maintenance/registry.md`
 
 ## 待办
 

@@ -14,7 +14,7 @@
 | `speaking-practice-timer` | 雅思 | 口语限时练习 / Part 2 计时 | 待建 |
 | `listening-dictation-tool` | 雅思 | 听力精听 / 听写工具 | 待建 |
 
-| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（file: 检索式） | `tools/graph-style/configure.py` |
+| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path + file 检索式，seed/personal × 层级/类型） | `tools/graph-style/configure.py` |
 
 ## 技术栈
 

@@ -41,7 +41,7 @@
   ▼
 ⑤ 生成初始图谱    seed/ 核心概念/节骨架（wikilink 相连）
   ▼
-⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 file: 检索式）
+⑥ 自动配置图谱样式  `python tools/graph-style/configure.py`（配色分组 path + file 检索式）
   ▼
 输出：seed 目录（可分发，人人可在此基础上搭建）
 ```
@@ -129,21 +129,25 @@
 
 - Obsidian 原生**节点大小由链接数决定**，不支持按类型设大小；通过 3 的层级链接让概览自然最大
 - **颜色分组用检索式配置**（`.obsidian/graph.json` → `colorGroups`）
-- 实测 **`type:` 属性检索式未生效**，改用 **`file:` 文件名检索式**（通用、已验证）
+- **配色规则（强制区分 seed / personal + 层级/类型）**：
+  - **seed 类**：低饱和 / 沉稳色，表示共享只读地基；按层级区分色相
+  - **personal 类**：高饱和 / 鲜艳色，表示个人增量；按文章类型区分色相
 - **初始化自动执行**（无需手动）：`python tools/graph-style/configure.py`
-  - 默认配色：学科全景 `#C2185B`／章 `#1565C0`／节 `#2E7D32`／概念 `#78909C`
-  - 脚本用 `file:学科概览` / `file:Ch` / `file:Sec` / `file:概念` 四组检索式，任意学科通用
+  - 默认配色：
+    - seed：学科全景 `#B0717A`／章 `#5C7A99`／节 `#6B8E6B`／概念 `#78909C`
+    - personal：学科全景 `#FF1744`／章 `#2979FF`／节 `#00C853`／概念 `#FF9100`／论文 `#D500F9`／思考 `#FF6D00`／提问 `#651FFF`／习题 `#00E5FF`／作业 `#76FF03`／问题 `#F50057`
+  - 脚本用 `path:seed` / `path:personal` 结合 `file:` 检索式，按目录 + 文件名区分，任意学科通用
 - 也可在 **Obsidian 图视图 → 设置 → 颜色分组** 手动增改（UI 会写回 `graph.json`，格式为 `{"query":"...","color":{"a":1,"rgb":N}}`）
 
 ### 5. 中间文件清理/忽略（重要教训）
 
 - Obsidian `userIgnoreFilters` 的 **`**` 通配不可靠**（README/part1 仍入图）
 - 必须用**显式路径**：根文件写文件名，目录写 `folder/`，例如：
-  - `README.md`、`CLAUDE.md`、`AGENTS.md`、`ARCHITECTURE.md`
+  - `README.md`、`CHANGELOG.md`、`CLAUDE.md`、`AGENTS.md`、`ARCHITECTURE.md`
   - `.claude/` `.codex/` `.trae/` `rules/` `templates/` `guide/` `tools/` `maintenance/` `_archive/` `_session/` `_checkpoints/` `_demo-vault/`
   - `assets/README.md`、`assets/{学科}/seed/README.md`、`assets/{学科}/seed/textbook/`
   - `未命名.canvas`、`未命名.base`
-- 图谱中只应出现文章节点（Ch/Sec/概念/学科概览）；README、textbook、json、base、canvas 全部忽略；xlsx 等版权源文件导入后删除
+- 图谱中只应出现文章节点（Ch/Sec/概念/学科概览）；README、CHANGELOG、textbook、json、base、canvas 全部忽略；xlsx 等版权源文件导入后删除
 - 每次初始化后做“图谱卫生检查”，新中间文件类型 → 加入本文件清单 + `.obsidian/app.json`
 
 ### 6. 初始化验收（含本次新增）
@@ -154,7 +158,7 @@
 - [ ] 现成图谱关系（前置/后置/关联）全部转为 wikilink
 - [ ] 0 坏链，无孤立文章节点
 - [ ] 中间文件已忽略（README/textbook/xlsx/base/canvas）
-- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，file: 检索式）
+- [ ] 配色分组已自动配置（`python tools/graph-style/configure.py`，path + file 检索式）
 
 
 > **实测结论（2026-08-27）**：直接改 `.obsidian/graph.json` 可能被运行中的 Obsidian 覆盖/不生效；
