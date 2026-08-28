@@ -67,7 +67,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 可视化演示工具 | 教学演示工具生成规范（core/ui/utils 三层 + 自检流程） | `.dsh/skills/visualization-interaction-builder/` |
 | 学习画像 | 程序化分析学习类型/兴趣焦点/生长形态 | `tools/learning-profile/analyze.py` |
 | 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae | `.dsh/` `.claude/` `.codex/` `.trae/` |
-| 模板框架 | 10 类文章模板 + 周报 | `templates/` |
+| 模板框架 | 内置 10 类 + 扩展文章模板 + 周报 | `templates/` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
 > 当前学科包：雅思（IELTS），规则见 `rules/subjects/雅思/`，资产结构见 `assets/雅思/`。

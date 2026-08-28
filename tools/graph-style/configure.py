@@ -37,6 +37,8 @@ PALETTE = [
     ("path:personal file:习题",      "#00E5FF"),  # 习题：高饱和青
     ("path:personal file:作业",      "#76FF03"),  # 作业：高饱和黄绿
     ("path:personal file:问题",      "#F50057"),  # 问题：高饱和粉红
+    ("path:personal file:每日外刊",   "#00BFA5"),  # 每日外刊：高饱和青绿
+    ("path:personal file:阅读真题",   "#6200EA"),  # 阅读真题：高饱和深紫
 ]
 
 def rgb(hexstr: str) -> int:

@@ -104,6 +104,20 @@
         "a": 1,
         "rgb": 16056407
       }
+    },
+    {
+      "query": "path:personal file:每日外刊",
+      "color": {
+        "a": 1,
+        "rgb": 49061
+      }
+    },
+    {
+      "query": "path:personal file:阅读真题",
+      "color": {
+        "a": 1,
+        "rgb": 6422762
+      }
     }
   ],
   "collapse-display": false,

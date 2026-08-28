@@ -20,6 +20,8 @@
 | 8 | 习题 | `习题-{主题}.md` | 出题 / 习题 |
 | 9 | 作业 | `作业-{主题}.md` | 作业 / 任务 |
 | 10 | 问题 | `问题-{主题}.md` | 待解问题 |
+| 11 | 每日外刊 | `每日外刊-{标题}.md` | 外刊阅读/听读回抄素材（扩展类型） |
+| 12 | 阅读真题 | `阅读真题-{来源编号}.md` | 雅思阅读真题 Passage（扩展类型） |
 
 > **checkpoint**：临时草稿/快照，`_checkpoints/{文章名}.md`；属于资产，正式与否只是 tag（建文时定）。
 
@@ -71,7 +73,7 @@ _archive/{学科}/          # 归档（不再活跃但有参考价值）
 ### 1. frontmatter（必填）
 ```yaml
 ---
-type: {10 类之一}
+type: {已注册类型之一}
 formal: true|false      # 是否正式（checkpoint 为 false）
 subject: {subject-slug}
 created: {YYYY-MM-DD}
@@ -300,6 +302,32 @@ tags: [math, {subject-slug}]
 ```
 
 - **模板**：`templates/problem-template.md`
+
+### 11. 每日外刊
+
+```
+# 每日外刊-{标题}
+- 来源 / 日期（可选）：[出处 / 日期]
+- 原文
+## Expression Library
+[从本文提取的表达/搭配/同义替换]
+```
+
+- 模板：`templates/每日外刊-template.md`
+- 校验：至少包含基础原文与 Expression Library
+
+### 12. 阅读真题
+
+```
+# 阅读真题-{来源编号}
+- 来源 / 题号（可选）：[剑桥雅思 Test/Passage 或题号]
+- 原文
+## Expression Library
+[从本文提取的表达/搭配/同义替换]
+```
+
+- 模板：`templates/阅读真题-template.md`
+- 校验：至少包含基础原文与 Expression Library
 
 ### 讲解包（多文件展开，属于 note，不是类型）
 

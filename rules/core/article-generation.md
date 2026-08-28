@@ -2,9 +2,9 @@
 
 > 每一类文章必须明确：**生成依赖**（哪个 skill / 哪些用户信息）+ **生成规范**（命名 / frontmatter / 结构 / 链接 / 校验）。
 > 核心规则 · 学科无关。
-> 10 类文章结构规范与模板已落地；习题生成走 `exercise-generator`。
+> 内置 10 类文章结构规范与模板已落地；扩展类型按 `asset-spec.md §一·五` 登记。习题生成走 `exercise-generator`。
 
-## 10 类文章生成方式
+## 内置 + 扩展文章生成方式
 
 | 文章类型 | 生成依赖（skill / 用户信息） | 生成规范落点 |
 |---------|---------------------------|-------------|
@@ -18,6 +18,8 @@
 | 习题 | `exercise-generator`（出题 + 答案折叠，不做检验） | `templates/exercise-template.md` + `asset-spec.md` §四.8 |
 | 作业 | 用户提供作业 / 任务 + 入链挂知识点 | `templates/homework-template.md` + `asset-spec.md` §四.9 |
 | 问题 | 用户待解问题 + `decision-trees.md` §1 成文判定 | `templates/problem-template.md` + `asset-spec.md` §四.10 |
+| 每日外刊 | 用户提供外刊原文 + 听读回抄/精读 | `templates/每日外刊-template.md` + `asset-spec.md` §四.11 |
+| 阅读真题 | 用户提供 IELTS 真题 Passage + 扫盲/精读 | `templates/阅读真题-template.md` + `asset-spec.md` §四.12 |
 
 ## 讲解包（多文件展开，属于 note）
 

@@ -72,11 +72,11 @@
 | **大管线** | 初始化→创建文章→维护文章 | `.dsh/skills/ai-study-method/SKILL.md`（唯一来源） |
 | **三条铁律** | AI 是导游不是答案机 / 问题设置>追问 / 允许不全懂继续走 | 同上 |
 | **讲解质量约束** | 先定义再使用、每步有"因为"、多视角、核心收束、防跳跃、反例强制 | `.dsh/skills/tutor/SKILL.md`（唯一来源） |
-| **文章对象与类型** | 10 类文章/节点，一切活动落成文章 | `rules/core/asset-spec.md`（唯一来源） |
+| **文章对象与类型** | 内置 10 类 + 扩展类型文章/节点，一切活动落成文章 | `rules/core/asset-spec.md`（唯一来源） |
 | **决策规则** | 成文/归属/文章操作/链接/TOPIC/恢复/学习类型 | `rules/core/decision-trees.md`（唯一来源） |
 | **初始化规范** | 基于教材生成 seed（含能力覆盖矩阵） | `rules/core/init-spec.md`（已建） |
 | **输出模板框架** | 带占位符的通用模板 | `templates/*-template.md` |
-| **文章生成方式** | 10 类文章的生成依赖与规范 | `rules/core/article-generation.md`（新增） |
+| **文章生成方式** | 内置 + 扩展文章类型的生成依赖与规范 | `rules/core/article-generation.md` |
 | **生命周期（TOPIC）** | 新话题建 checkpoint（OPEN，按文章名）；升级/归档/删除 = CLOSE；新对话先查 git log | `_checkpoints/` + `rules/core/decision-trees.md` §5·5 |
 | **学习画像规则** | 扫 wikilink + frontmatter；兴趣焦点看图结构 | `rules/core/profile.md` + `tools/learning-profile/analyze.py`（已建） |
 | **harness 抽象** | interface + adapters，跑在各种 harness | `rules/core/harness/`（已建） |

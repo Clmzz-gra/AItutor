@@ -7,6 +7,8 @@
 - 新增雅思学科包：`rules/subjects/雅思/`（config / case / capabilities / curriculum / studyhelper-method）+ `assets/雅思/` 目录结构；seed 含占位 `学科概览.md`
 - 雅思学科拓展参考 `E:\StudyHelper\skills\ielts\SKILL.md` 方法论撰写
 - 雅思长期仅保留：听读回抄法、串词成文、引导精读/扫盲式阅读；其他 StudyHelper 方法静默，不追踪进度
+- 新增扩展文章类型：`每日外刊`、`阅读真题`（基础结构为原文 + Expression Library）
+- 接入文章类型扩展通道：核心规范、模板、图谱配色、生成方式已补齐
 - 同步更新 README、ARCHITECTURE、guide、tools 索引与 Obsidian 忽略规则
 
 ## 0.2.1 — 2026-08-27
