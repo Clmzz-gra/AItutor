@@ -23,6 +23,7 @@
 | **Git 管理**（TOPIC OPEN/CLOSE） | `rules/core/git-workflow.md` |
 | **初始化**（全量/一次/无生命周期） | `rules/core/init-spec.md` |
 | **学习画像** | `rules/core/profile.md` |
+| **Obsidian CLI 用法**（vault 操作） | `tools/obsidian-cli.md` |
 | **通用讲解** | `.dsh/skills/tutor/SKILL.md` |
 | **可视化演示工具** | `.dsh/skills/visualization-interaction-builder/SKILL.md` |
 | **学科配置/大纲** | `rules/subjects/{subject}/config.md`、`curriculum.md` |
@@ -35,5 +36,7 @@
 4. **记录优先**：任何新知识先落 checkpoint（草稿文章），确认后升级。
 5. **话题检查**：开启新对话先 `git log --grep "[TOPIC"`，处理未闭合话题。
 6. **不确定先问**：AI 不确定时一律咨询人类。
+7. **中文优先**：面向中文用户——对话/文章/文档/提交信息默认简体中文，术语附中文解释。
+8. **Obsidian 优先**：vault 操作（文章读写/搜索/坏链体检/图谱/展示）优先用 Obsidian CLI，用法唯一来源 `tools/obsidian-cli.md`；AI 建笔记按其标准回路（防重→创建→读回→链检→全库坏链）。
 
 > 本文件由 Claude Code 自动注入；规则变更只改唯一来源，本文件保持指针不变。
