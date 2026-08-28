@@ -3,7 +3,7 @@
 > 定位：AItutor 是一套**通用学习系统**，通过"学科拓展包"适配不同学科。
 > 核心稳定、拓展可插拔——换学科只换拓展，不动核心。
 > 治理：采用 **DeepSeek harness（EAC）规范治理模式**管理 skill 与学习模式。
-> 版本：0.2.1 ｜ 日期：2026-08-27
+> 版本：0.2.2 ｜ 日期：2026-08-29
 
 ---
 
@@ -197,7 +197,7 @@ assets/{subject}/
 - [x] 建立 `init-spec` 初始化规范（基于教材，含 MinerU/LaTeX/Python 通用依赖）
 - [x] 建立 `index-format`（`_index.md`）→ 已归档（不设索引，2026-08-27）
 - [x] 建立 `subject-config` 学科配置规范（学习依赖 + 思考方式）
-- [x] 建立 harness 抽象层（interface + dsh/trae/claude-code/codex adapters）
+- [x] 建立 harness 抽象层（interface + dsh/trae/claude-code/codex/zcode adapters）
 - [x] 建立 `assets/` 资产层结构（seed + personal）
 - [x] 建立 `curriculum` 课程大纲模板（老师开课前写）
 - [x] 概率论 seed 初始化（现成知识图谱导入，含能力覆盖矩阵）

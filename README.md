@@ -22,7 +22,7 @@ AItutor将知识图谱设计为**动态的可拓展对象**。你只需要通过
 
 该项目同时服务于自学的**学生**，希望使用该项目提高教学效果的**教师**，以及想要对该项目二次开发的创作者。
 
-> 版本：0.2.1
+> 版本：0.2.2
 **该项目当前处于测试阶段，在获取试点反馈后将进行蜕变式更新。**
 
 架构与设计说明见 [ARCHITECTURE.md](./ARCHITECTURE.md)
@@ -47,7 +47,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 每个实质学习话题先建 checkpoint 快照，学完沉淀升级为资产。新对话先查 git 记录确认快照情况，防止进度丢失。
 
 **多 harness 适配**
-同一套规则通过 interface + adapters 跑在 DeepSeek / Claude Code / Codex / Trae 上，入口只放指针引向全量文件。
+同一套规则通过 interface + adapters 跑在 DeepSeek / Claude Code / Codex / Trae / ZCode 上（ZCode 原生读 `AGENTS.md`，免指针），入口只放指针引向全量文件。
 
 **学习画像程序化**
 基于学生增量图谱程序化分析学习类型、兴趣焦点、生长形态，不依赖 AI 主观统计。
@@ -66,7 +66,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 习题生成 | 按常见练习形式出题（单选/判断/填空/读表/计算/综合），答案折叠，不做检验 | `.dsh/skills/exercise-generator/` |
 | 可视化演示工具 | 教学演示工具生成规范（core/ui/utils 三层 + 自检流程） | `.dsh/skills/visualization-interaction-builder/` |
 | 学习画像 | 程序化分析学习类型/兴趣焦点/生长形态 | `tools/learning-profile/analyze.py` |
-| 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae | `.dsh/` `.claude/` `.codex/` `.trae/` |
+| 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae / ZCode（原生读 `AGENTS.md`） | `.dsh/` `.claude/` `.codex/` `.trae/` + 根 `AGENTS.md` |
 | 模板框架 | 10 类文章模板 + 周报 | `templates/` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
@@ -83,7 +83,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 1. 安装 **Obsidian**（1.12.7+），将项目根目录作为 vault 打开——图谱、文章和笔记都会在这里可视化；启用 **Obsidian CLI**（官方原文）：
    > Enable **Obsidian CLI** under **Settings → About → Command line interface**, follow the registration prompt, restart your terminal, then verify with `obsidian help`.
    按提示注册后重启终端，验证 `obsidian help` 可正常输出。
-2. 安装任一支持的 harness（DeepSeek / Claude Code / Codex / Trae）。
+2. 安装任一支持的 harness（DeepSeek / Claude Code / Codex / Trae / ZCode）。
 3. 克隆本项目到自己的电脑。
 
 **放入教材**
@@ -166,7 +166,7 @@ AItutor/
 ├── tools/                       # 工具脚本（学习画像等）
 ├── assets/                      # 学科资产层（seed 只读地基 + personal 学生增量；仅占位结构，实际内容本地）
 │   └── {学科}/                  #   每学科一个子目录（seed/textbook + personal/notes...）
-└── .claude/ .codex/ .trae/      # 各 harness 指针注入入口
+└── .claude/ .codex/ .trae/      # 各 harness 指针注入入口（ZCode 原生读 AGENTS.md，免目录）
 ```
 
 ---
