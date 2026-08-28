@@ -46,6 +46,7 @@ python tools/learning-profile/analyze.py \
 
 > 模板：`templates/weekly-report-template.md`（程序化数据 + AI 解读）。
 > 生成方式：跑 `analyze.py` 取各维度数据 → 填入模板 → AI 补充"下周建议"。
+> **溯源要求（强制）**：AI 解读 / 下周建议中每条定性判断，句尾以脚注（`[^n]`）引用至少一个 wikilink 节点作证据；找不到支撑节点的判断不写。程序化统计部分不需要溯源（可复算）。为什么：AI 定性结论是编造高发区，脚注让画像可点回图谱审计。
 
 ## 待细化
 - [x] 学习类型判定（程序化，阈值待校准）
