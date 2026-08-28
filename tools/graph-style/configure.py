@@ -19,6 +19,7 @@ GRAPH = ROOT / ".obsidian" / "graph.json"
 # 配色规则：
 # - seed 类：低饱和 / 沉稳，表示共享只读地基；同一色系内按层级用不同色相区分
 # - personal 类：高饱和 / 鲜艳，表示个人增量；同一高饱和体系内按文章类型用不同色相区分
+# 二次开发新增文章类型时，在此 PALETTE 追加对应 query 即可（见 asset-spec §一·五）。
 PALETTE = [
     # seed：低饱和，按层级区分
     ("path:seed file:学科概览", "#B0717A"),  # 学科全景：低饱和玫瑰

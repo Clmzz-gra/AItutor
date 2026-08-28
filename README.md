@@ -133,13 +133,17 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 3. 在 `rules/subjects/` 建子目录：`config.md`（学习依赖/思考方式）、`case.md`（教材/课程）、`capabilities.md`（能力地图）、`curriculum.md`（大纲）。
 4. 基于教材初始化 `assets/{学科}/seed/`。
 
+**新增文章类型**
+
+5. 按 `asset-spec.md §一·五` 扩展通道补齐：类型定义、模板、生成方式、配色、校验，并登记。
+
 **新增演示工具**
 
-5. 按 `visualization-interaction-builder` 规范生成，放 `assets/{学科}/personal/demos/`，跑自检审查流程。
+6. 按 `visualization-interaction-builder` 规范生成，放 `assets/{学科}/personal/demos/`，跑自检审查流程。
 
 **扩展 harness**
 
-6. 在 `rules/core/harness/adapters/` 加适配文件，建对应入口指针文件（如 `CLAUDE.md`、`.codex/AGENTS.md`）。
+7. 在 `rules/core/harness/adapters/` 加适配文件，建对应入口指针文件（如 `CLAUDE.md`、`.codex/AGENTS.md`）。
 
 ---
 

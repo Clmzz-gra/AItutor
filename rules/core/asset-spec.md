@@ -4,7 +4,7 @@
 > **资产 = 文章**，都属于资产层（`assets/`）。区别只在**正式 vs 临时**。
 > 文章生成方式见 **`rules/core/article-generation.md`**。
 
-## 一、文章类型（10 类定版）
+## 一、文章类型（10 类内置，可扩展）
 
 > seed 是目录（归属层），不是文章类型。讲解包是多文件展开（属于 note），不是文章类型。
 
@@ -22,6 +22,30 @@
 | 10 | 问题 | `问题-{主题}.md` | 待解问题 |
 
 > **checkpoint**：临时草稿/快照，`_checkpoints/{文章名}.md`；属于资产，正式与否只是 tag（建文时定）。
+
+### 一·五、文章类型扩展通道（二次开发）
+
+> 新增文章类型是**核心规则扩展**，不是普通用户操作。必须按以下扩展点补齐，不能只改一个文件。
+
+| 扩展点 | 位置 | 说明 |
+|--------|------|------|
+| 类型定义 | 本文件 §一 | 新增 `type` 值 + 命名规则 |
+| frontmatter | 本文件 §三 | 类型特有字段（可选） |
+| 结构模板 | `templates/{type}-template.md` | 新建对应模板 |
+| 生成方式 | `rules/core/article-generation.md` | 生成依赖表新增一行 |
+| 图谱配色 | `tools/graph-style/configure.py` | 新增 personal / seed 配色 query |
+| 校验规则 | 本文件 §四 + `article-generation.md` | 该类型必填项 / 链接 / 校验 |
+| 生命周期 | 默认沿用 `decision-trees.md` | checkpoint → 升级 → 维护 |
+| 目录归属 | 本文件 §二 | 默认 personal；确属 seed 类型才放入 seed |
+
+扩展流程：
+
+1. 确认现有 10 类 + 讲解包无法表达该内容
+2. 按上表补齐所有扩展点
+3. 更新 README / 导航（如需要）
+4. 登记到 `maintenance/registry.md`
+
+> 新增类型默认使用 personal 高饱和配色；若作为 seed 类型，则使用 seed 低饱和配色。
 
 ## 二、目录约定（Obsidian 原生治理，无索引文件）
 
