@@ -317,6 +317,7 @@ tags: [math, {subject-slug}]
 
 - 模板：`templates/每日外刊-template.md`
 - 校验：至少包含基础原文与 Expression Library
+- 写作惯例：原文中用**加粗**标出 Expression Library 收录的表达——每条在其"原文句子/用法"对应位置加粗一次，原文标题下加图例「**加粗** = Expression Library 收录的表达」
 
 ### 12. 阅读真题
 
@@ -330,6 +331,7 @@ tags: [math, {subject-slug}]
 
 - 模板：`templates/阅读真题-template.md`
 - 校验：至少包含基础原文与 Expression Library
+- 写作惯例：原文中用**加粗**标出 Expression Library 收录的表达——每条在其"原文句子/用法"对应位置加粗一次，原文标题下加图例「**加粗** = Expression Library 收录的表达」
 
 ### 讲解包（多文件展开，属于 note，不是类型）
 

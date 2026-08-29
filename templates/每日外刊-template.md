@@ -16,7 +16,9 @@ tags:
 
 ## 原文
 
-[外刊原文]
+> **加粗** = Expression Library 收录的表达。
+
+[外刊原文；表达库收录的表达用 **加粗** 标出]
 
 ## Expression Library
 
