@@ -90,7 +90,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 **准备环境（学生只需少量设置）**
 
-1. 下载本项目 **ZIP** 并**解压**（国内学生可用 Gitee/GitCode，避免 GitHub 梯子问题）。
+1. 下载本项目 **ZIP** 并**解压**（国内学生可用 [Gitee](https://gitee.com/clmzz/AItutor) / [GitCode](https://gitcode.com/clmzz/AItutor)，避免 GitHub 梯子问题）。
 2. Windows：**双击根目录的 `一键安装.bat`**，什么都不用输入，脚本会自动装好 Git / Python / Obsidian / Obsidian CLI / **MinerU CLI**，装完还会**自动运行体检**；若还没装 ZCode，脚本会给出官网链接 https://zcode.z.ai/。
    macOS/Linux：运行 `bash tools/setup/bootstrap.sh`。
    - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（中文界面下 设置 → 关于 → 命令行界面 → 注册 → 重启终端 → `obsidian help` 验证）。
