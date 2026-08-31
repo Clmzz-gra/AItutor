@@ -99,7 +99,7 @@
 
   <div class="card">
     <h2>② 一键安装（Windows）</h2>
-    <p class="sub">双击一个文件，自动装好 Git / Python / Obsidian / Obsidian CLI / MinerU CLI，装完自动体检。</p>
+    <p class="sub">双击一个文件，自动装好 Git / Python / Obsidian / MinerU CLI，装完自动体检。</p>
     <div class="step">
       <div class="num">2</div>
       <div class="body">
@@ -112,7 +112,7 @@
           <li>检查并安装 <strong>Git</strong>（没有就自动装）</li>
           <li>检查并安装 <strong>Python</strong>（没有就自动装）</li>
           <li>检查并安装 <strong>Obsidian</strong>（依次尝试 winget → choco → scoop → 浏览器手动下载）</li>
-          <li>启用 <strong>Obsidian CLI</strong>（命令行界面）</li>
+          <li>安装 <strong>Obsidian</strong>（CLI 需在下一步手动启用）</li>
           <li>安装 <strong>MinerU CLI</strong>（教材 OCR / PDF 转 Markdown，依次尝试 清华/阿里/中科大/豆瓣/官方 多个源）</li>
           <li>装完<strong>自动运行体检</strong>（doctor）</li>
         </ul>
@@ -125,10 +125,31 @@
   </div>
 
   <div class="card">
-    <h2>③ 安装 ZCode（默认推荐）</h2>
-    <p class="sub">ZCode 最简单，原生读取 AGENTS.md，配置最少。</p>
+      <div class="card">
+    <h2>③ 启用 Obsidian CLI（手动）</h2>
+    <p class="sub">Obsidian 装好后，还需要手动开启命令行界面（CLI），AI 才能读写你的笔记。</p>
     <div class="step">
       <div class="num">3</div>
+      <div class="body">
+        <h3>开启 Obsidian 命令行界面</h3>
+        <p>打开 Obsidian，进入 <strong>设置 → 关于 → 命令行界面（Command line interface）</strong>，按提示<strong>注册 / 启用</strong>，然后<strong>重启终端</strong>（或重启 Obsidian）。</p>
+        <div class="tip">💡 中文界面路径：设置 → 关于 → 命令行界面；英文：Settings → About → Command line interface。</div>
+        <h3>验证是否成功</h3>
+        <p>打开命令行（终端），输入下面命令，能输出命令列表就说明成功了：</p>
+        <ul>
+          <li><code>obsidian help</code> — 输出命令全表即成功</li>
+          <li><code>obsidian version</code> — 显示版本号（如 1.13.7）</li>
+        </ul>
+        <div class="img-box">📷 截图占位 1：设置 → 关于 → 命令行界面（图片放 assets/install/step3-1.png）</div>
+        <div class="img-box">📷 截图占位 2：obsidian help 验证成功（图片放 assets/install/step3-2.png）</div>
+      </div>
+    </div>
+  </div>
+
+<h2>④ 安装 ZCode（默认推荐）</h2>
+    <p class="sub">ZCode 最简单，原生读取 AGENTS.md，配置最少。</p>
+    <div class="step">
+      <div class="num">4</div>
       <div class="body">
         <h3>去官网安装 ZCode</h3>
         <p>点击下面按钮打开官网，下载并安装 ZCode（安装后<strong>重开终端/命令行</strong>即可生效）。</p>
@@ -142,10 +163,10 @@
   </div>
 
   <div class="card">
-    <h2>④ 配置免费模型</h2>
+    <h2>⑤ 配置免费模型</h2>
     <p class="sub">默认免费模型：GLM-4.5-Flash（免费，能力有限）。</p>
     <div class="step">
-      <div class="num">4</div>
+      <div class="num">5</div>
       <div class="body">
         <h3>第一步：注册 / 登录并申请免费 Key</h3>
         <p>打开 <a href="https://open.bigmodel.cn/" target="_blank">open.bigmodel.cn</a>，用手机号或邮箱<strong>注册并登录</strong>（免费），然后在控制台申请一个 <strong>API Key</strong>（免费，只需申请一次）。</p>
@@ -171,10 +192,10 @@
   </div>
 
   <div class="card">
-    <h2>⑤ 体检 &amp; 开始学习</h2>
+    <h2>⑥ 体检 &amp; 开始学习</h2>
     <p class="sub">全部 [OK] 后即可开始。</p>
     <div class="step">
-      <div class="num">5</div>
+      <div class="num">6</div>
       <div class="body">
         <h3>运行体检</h3>
         <p>一键安装结束会自动体检；也可以随时<strong>双击根目录的 <code>体检.bat</code></strong>。</p>
