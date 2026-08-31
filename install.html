@@ -61,9 +61,10 @@
       <div class="body">
         <h3>打开项目文件夹，双击 <code>一键安装.bat</code></h3>
         <p>什么都不用输入，脚本会自动装好：Git、Python、Obsidian、Obsidian CLI、MinerU CLI，装完还会自动运行体检。</p>
-        <a class="btn" href="打开文件夹.vbs">📂 打开项目文件夹</a>
+        <a class="btn" href="安装向导.hta">🪟 打开安装向导（推荐，可直接运行）</a>
+        <a class="btn ghost" href="打开文件夹.vbs">📂 打开项目文件夹</a>
         <button class="btn ghost" onclick="copyPath()">📋 复制文件夹路径</button>
-        <p style="font-size:14px;color:#64748b;">点“打开项目文件夹”会运行 <code>打开文件夹.vbs</code> 拉起文件管理器；若浏览器提示下载，请选择“打开/运行”，或直接双击项目里的 <code>打开文件夹.vbs</code>。打开后双击 <code>一键安装.bat</code> 即可。</p>
+        <p style="font-size:14px;color:#64748b;">推荐点“打开安装向导”，它会以本地程序方式运行，能直接打开文件夹、运行 bat；若浏览器提示下载，请选择“打开/运行”，或直接双击项目里的 <code>安装向导.hta</code>。</p>
         <script>
         function copyPath(){
           var p = location.href;

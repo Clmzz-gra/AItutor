@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>AItutor 安装向导</title>
+<hta:application id="oApp" applicationname="AItutor安装向导" border="thick" caption="yes" showintaskbar="yes" singleinstance="yes" scroll="yes" />
+<style>
+  body { font-family:"Microsoft YaHei",sans-serif; background:#f5f7fb; color:#1f2937; margin:0; padding:24px; }
+  h1 { color:#2f6fed; }
+  .card { background:#fff; border:1px solid #e3e8f0; border-radius:10px; padding:16px 20px; margin:14px 0; }
+  .btn { display:inline-block; background:#2f6fed; color:#fff; border:none; border-radius:8px; padding:10px 18px; margin:6px 6px 6px 0; font-size:15px; cursor:pointer; }
+  .btn.ghost { background:#fff; color:#2f6fed; border:1px solid #2f6fed; }
+  code { background:#eef2ff; color:#3730a3; padding:2px 6px; border-radius:4px; }
+  .tip { background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px 14px; margin:10px 0; }
+</style>
+</head>
+<body>
+<h1>AItutor 安装向导</h1>
+<p>这个窗口是本地程序，可以直接帮你打开文件夹、运行安装脚本。</p>
+
+<div class="card">
+  <h2>第 1 步：打开项目文件夹</h2>
+  <button class="btn" onclick="openFolder()">📂 打开项目文件夹</button>
+  <p>打开后能看到 <code>一键安装.bat</code>。</p>
+</div>
+
+<div class="card">
+  <h2>第 2 步：运行一键安装</h2>
+  <button class="btn" onclick="runInstall()">▶ 运行 一键安装.bat</button>
+  <p>会自动装 Git / Python / Obsidian / Obsidian CLI / MinerU CLI，装完自动体检。</p>
+</div>
+
+<div class="card">
+  <h2>第 3 步：安装 ZCode（默认推荐）</h2>
+  <button class="btn" onclick="openUrl('https://zcode.z.ai/')">打开 ZCode 官网</button>
+</div>
+
+<div class="card">
+  <h2>第 4 步：配置免费模型</h2>
+  <button class="btn" onclick="openUrl('guide/免费模型配置.md')">查看免费模型配置</button>
+  <p>默认免费模型：GLM-4.5-Flash（glm-4.5-flash）</p>
+</div>
+
+<div class="card">
+  <h2>第 5 步：体检 &amp; 开始学习</h2>
+  <button class="btn" onclick="runDoctor()">▶ 运行体检</button>
+  <p>全部 [OK] 后，对 AI 说：开始学习〈学科名〉</p>
+</div>
+
+<div class="tip">💡 若 MinerU 或 Obsidian 装不上，脚本会自动换多个源/渠道，或提示你浏览器手动下载。</div>
+
+<script language="VBScript">
+  Sub openFolder()
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+    sh.Run "explorer.exe .", 1, False
+  End Sub
+
+  Sub runInstall()
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+    sh.Run "一键安装.bat", 1, False
+  End Sub
+
+  Sub runDoctor()
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+    sh.Run "cmd /c python tools\doctor.py & pause", 1, False
+  End Sub
+
+  Sub openUrl(url)
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+    sh.Run "cmd /c start " & url, 0, False
+  End Sub
+</script>
+</body>
+</html>
