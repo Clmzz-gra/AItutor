@@ -8,9 +8,9 @@ description: >
 
 # 可视化交互生成 — 教学演示工具生成规范
 
-> 版本 2.0 | 2026-08-24 | 通用化：从算法演示（edudemo）抽象为学科无关的教学演示工具规范
+> 版本 2.1 | 2026-08-31 | 在通用规范上新增**浏览器端可视化进阶拓展**（three.js / p5.js / d3.js）
 > 本 skill 承载「生成教学演示 GUI 工具」的**通用规范**：结构（core/ui/utils 三层）+ 演示要素 + 界面要素 + 实验对比 + 验收标准。
-> 学科/算法专属内容作为**拓展**，见文末「学科拓展」。
+> 学科/算法专属内容作为**拓展**，见文末「学科拓展」；高质感浏览器端演示见**拓展 C**。
 
 ## 定位
 
@@ -30,6 +30,7 @@ description: >
 
 - **Streamlit**（交互界面）+ **Plotly**（实时绘图）+ **NumPy/SciPy**（计算）
 - 依赖写入各工具 `requirements.txt`（如 `streamlit>=1.28`、`numpy`、`plotly`、`pandas`）
+- 默认技术栈追求**零前端构建、开箱即用**；若对视觉质感有更高要求（3D / 创意动画 / 网页知识图谱），改用**拓展 C：浏览器端可视化**（three.js / p5.js / d3.js）替代，而不是改用其他 Python 包装层。
 
 ## 工程结构（强制）
 
@@ -159,6 +160,88 @@ pause
 - 实变泛函：勒贝格积分 vs 黎曼积分对比、康托尔集构造、简单函数逼近
 - 概率论：CLT / 大数定律（见 `assets/概率论与数理统计/personal/demos/clt-demo/`）
 - 各学科要做的演示工具清单 → `rules/subjects/{subject}/demo-spec.md`（可选）
+
+### 拓展 C：浏览器端可视化（three.js / p5.js / d3.js）——高视觉质感进阶
+
+> **定位**：默认 Streamlit 技术栈追求零前端构建、开箱即用，但视觉质感有限。当演示**需要更高视觉表现力**时（3D 立体、艺术化动态、精致网页知识图谱），用本拓展替代默认技术栈。**默认优先，除非明确要"更炫的视觉"**。选择结果须在工具 `README.md` 与对应学科 `personal/README.md` 中标注技术栈（`streamlit` / `browser`）。
+
+### 技术栈选择（按需三选一）
+
+| 库 | 强项 | 适用 |
+|----|------|------|
+| **three.js** | 3D / WebGL、光影、粒子、立体 | 立体几何、分子结构、物理场、三维坐标系等必须 3D 的场景 |
+| **p5.js** | 创意编程、艺术动态、上手最快 | 过程性教学动画：分形、几何变换、随机模拟、粒子系统 |
+| **d3.js** | 数据绑定 + 力导向图、像素级定制 | 精致数据图表、知识图谱 / 学习画像网络图（节点=文章、大小=链接度） |
+
+- 三者可混用（如 d3 做图谱 + three 做 3D 节点），但每工具按需引入，避免依赖臃肿。
+
+### 前置条件
+
+- 需 **Node.js / npm**（项目"一键安装"默认不含 Node，学生侧需单独安装并说明）。
+- 构建推荐 **Vite**（`npm create vite@latest` 或手写极简 `vite` 配置），本地开发零配置热更新。
+
+### 工程结构（浏览器端版，对应强制结构）
+
+```
+assets/{subject}/personal/demos/<demo>-tool/
+├── README.md            # 工具说明：演示什么、结构、参数、画布、状态、技术栈= browser
+├── package.json         # 依赖（three / p5 / d3 按需 + vite）+ scripts
+├── vite.config.js       # Vite 配置（可选）
+├── index.html           # 入口页（挂 canvas / 控制台 / 面板容器）
+├── 启动<工具名>.bat     # 可选：start npm run dev
+└── src/
+    ├── main.js          # 入口：装配 canvas + 各模块
+    ├── core/            # 领域核心（纯逻辑，零 DOM/渲染依赖）
+    │   ├── model.js     # 状态对象
+    │   ├── step.js      # 单步推进接口
+    │   └── <domain>_specific
+    ├── ui/
+    │   ├── visualization.js  # 画布：three/p5/d3 实时绘制
+    │   ├── controls.js       # 控制面板：参数控件/按钮/状态区
+    │   ├── analysis.js       # 结果分析：统计/对比
+    │   └── help.js           # 帮助面板
+    └── utils/
+        └── experiment.js     # 多次运行实验、统计对比、导出 CSV
+```
+
+### 分层规则（沿用，且更关键）
+
+1. **core 层零 DOM/渲染依赖**：只存状态、算结果、返回序列；不 import three/p5/d3，也不碰 `document`/`window`——保证能用 `node src/core/step.js` 做无界面验证。
+2. **ui 层零领域逻辑**：只做参数收集、调用 core、绘制。
+3. **utils 层可复用 core**：批处理不经界面。
+4. **参数面**：界面的参数控件与 core 模型构造参数一一对应。
+
+### 演示要素 / 数值正确性 / 界面要素
+
+**完全沿用上文**（状态对象、单步推进接口、结果输出、可复现；采样点覆盖特殊点、解析值覆盖、测度加权、对照真值；实时画布、函数表达式展示、参数侧栏、结果面板、帮助面板、当前状态与极限状态区分）。这些是本 skill 的**教学正确性核心，跨技术栈不变**，浏览器端同样强制。
+
+### 运行方式（浏览器端）
+
+- **GUI 运行**：`npm install` → `npm run dev`（或双击 `启动<工具名>.bat`）→ 浏览器打开 Vite 提示的本地地址。
+- **无界面运行**：core 层从工具根目录用 Node 模块方式：
+  ```bash
+  node src/core/step.js        # 无界面验证
+  node src/utils/experiment.js # 实验
+  ```
+  不能直接在 `index.html` 引入 core 后脱离 DOM 跑通 headless 验证。
+
+### 验收标准（浏览器端，替换原 Python 条目）
+
+1. `npm install && npm run dev` 可独立启动，浏览器打开无报错。
+2. `package.json` 依赖齐全；`启动<工具名>.bat`（若有）可双击启动。
+3. core 层可在 Node 无 DOM 环境运行（`node src/core/step.js` 循环跑完）。
+4. 界面实时绘图不卡顿（每帧计算 < 100ms，或用异步/降帧/requestAnimationFrame）。
+5. 可复现（涉及随机时固定 seed 两次运行一致）。
+6. 结果面板有值（演示至少推进若干步才允许结束）。
+7. 帮助面板覆盖：概念/算法原理、全部参数含义、操作步骤。
+8. 已在对应学科 `personal/README.md` 登记（工具/演示/状态/技术栈= browser）。
+9. **数值对照真值**：每个演示对象对照解析真值（见「数值正确性」），偏差超阈值即未完成。
+10. 控制台无未捕获异常；高频路径性能达标。
+
+### 与默认技术栈的差异提醒
+
+- 原 Python 强制结构中的 `requirements.txt`、`python -m core.step`、`启动<工具名>.bat`(streamlit) **不适用于本拓展**；以本拓展的 `package.json` / `src/` / `node` 结构为准。
+- 换用浏览器端会引入 Node 环境与前端构建成本，**仅当明确追求更高视觉质感时采用**；普通演示仍走默认 Streamlit。
 
 ## 与项目其他机制的配合
 
