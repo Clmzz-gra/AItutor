@@ -9,7 +9,7 @@
 - 学生端**默认免费模型定为 GLM-4.5-Flash**（免费档中能力最强、完全免费）：README 快速开始、`guide/学生使用指南.md`、`guide/免费模型配置.md` 统一口径，只需申请一次 Key
 - 校准智谱免费模型配置：对照 [GLM-4.5-Flash 官方文档](https://docs.bigmodel.cn/cn/guide/models/free/glm-4.5-flash) 将默认模型名设为 `glm-4.5-flash`，上下文窗口 `128000` / 最大输出 `96000` 写入 ZCode 填表速查；保留旧免费档 `glm-4-flash-250414` / `glm-4-flash` 作为兼容备选，Base URL 维持 OpenAI 兼容 `https://open.bigmodel.cn/api/paas/v4/`
 - **默认 harness 定为 ZCode**（最简，原生读 `AGENTS.md`）：README、学生指南、setup 文档与 bootstrap 脚本同步推荐；Claude Code / Codex 改为**按需安装**（脚本只给出 npm 命令，不再自动装）
-- README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置
+- README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置；并进一步面向“只会解压和打开文件”的用户（下载 ZIP → 解压 → 双击根目录 `一键安装.bat`）
 - README 补充国内托管提示（GitHub 不稳定时可改用 Gitee / GitCode），并升级版本号 0.2.4
 - 一键安装脚本检测到未装 ZCode 时，直接打开 ZCode 官网 https://zcode.z.ai/
 
