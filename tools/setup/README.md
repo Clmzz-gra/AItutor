@@ -16,7 +16,6 @@
 > 说明：脚本**不做任何 harness 检测**，只列出各 harness 官方网址；Claude Code / Codex 按需手动安装（默认不装）。
 > 一键安装结束会自动运行体检（doctor）；也可以随时双击根目录的 `体检.bat`。
 > 进阶：管理员/助教也可在命令行运行 `tools\setup\install.bat -CheckOnly`（只体检）或 `-Global`（国际源）。
-> `tools\setup\一键安装.bat` 是同一个入口的备份位置。
 
 ### macOS / Linux / Git Bash
 ```bash
@@ -57,7 +56,7 @@ python tools/doctor.py --repo-only  # 只看图谱/仓库健康
 ## 参数说明
 | 脚本 | 参数 | 作用 |
 |------|------|------|
-| `一键安装.bat` | （无） | 学生入口：双击即可自动安装（推荐） |
+| 根目录 `一键安装.bat` | （无） | 学生入口：双击即可自动安装（推荐） |
 | `install.bat` | `-CheckOnly` | 只体检，不安装（Windows 命令行） |
 | `install.bat` | `-Global` | 切国际官方源（Windows） |
 | `bootstrap.ps1` | `-CheckOnly` | 只体检，不安装 |
