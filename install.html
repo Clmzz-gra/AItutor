@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AItutor 一键安装教程</title>
+<title>AItutor 安装教程（图文版）</title>
 <style>
   :root{--main:#2f6fed;--main2:#6a5cff;--bg:#f4f6fb;--card:#fff;--line:#e3e8f0;--text:#1f2937;--muted:#64748b;--ok:#16a34a;--warn:#d97706;--danger:#b91c1c}
   *{box-sizing:border-box}
-  body{margin:0;font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+  body{margin:0;font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
   a{color:var(--main);text-decoration:none}
   header{background:linear-gradient(135deg,#2f6fed,#6a5cff 60%,#8b5cf6);color:#fff;padding:44px 16px 36px;text-align:center;position:relative;overflow:hidden}
   header::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.18),transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.12),transparent 40%)}
@@ -15,7 +15,7 @@
   header .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:999px;font-size:13px;margin-bottom:12px}
   header h1{margin:0 0 10px;font-size:30px;letter-spacing:1px}
   header p{margin:0;opacity:.95;font-size:15px}
-  main{max-width:900px;margin:28px auto;padding:0 16px}
+  main{max-width:920px;margin:28px auto;padding:0 16px}
   .summary{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 8px}
   .summary span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted)}
   .summary b{color:var(--main)}
@@ -40,6 +40,7 @@
   .danger{color:var(--danger);font-weight:700}
   .tip{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
   .note{background:#f0f4ff;border:1px solid #c7d7ff;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
+  .danger-box{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
   th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
   th{background:#f0f4ff;color:var(--main)}
@@ -53,13 +54,13 @@
 <body>
 <header>
   <div class="badge">AItutor · 学生版</div>
-  <h1>一键安装教程</h1>
-  <p>下载 ZIP → 解压 → 双击 安装向导.hta → 配免费模型 → 开始学习</p>
+  <h1>安装教程（图文版）</h1>
+  <p>下载 ZIP → 解压 → 双击 一键安装.bat → 装 ZCode → 配免费模型 → 开始学习</p>
 </header>
 
 <main>
   <div class="summary">
-    <span>📦 下载 ZIP</span><span>📂 解压</span><span>🪟 双击 <b>安装向导.hta</b></span><span>⚙️ 自动安装</span><span>✅ 体检</span><span>🚀 开始学习</span>
+    <span>📦 下载 ZIP</span><span>📂 解压</span><span>🪟 双击 <b>一键安装.bat</b></span><span>⚙️ 自动安装</span><span>✅ 体检</span><span>🚀 开始学习</span>
   </div>
 
   <div class="note">📸 每个步骤都可以放多张截图：把图片放到 <code>assets/install/</code>，然后复制一个 <code>&lt;div class="img-box"&gt;&lt;img src="assets/install/xxx.png"&gt;&lt;/div&gt;</code> 即可。</div>
@@ -71,11 +72,14 @@
       <div class="num">1</div>
       <div class="body">
         <h3>下载本项目 ZIP</h3>
-        <p>下载后<strong>解压</strong>到任意位置，记住解压后的文件夹。</p>
+        <p>点击下面任意一个仓库，进入后点页面上的 <strong>“下载 ZIP”</strong>（或“克隆/下载”按钮）把整个项目下载下来。</p>
         <a class="btn" href="https://gitee.com/clmzz/AItutor" target="_blank">🇨🇳 打开 Gitee 仓库</a>
         <a class="btn" href="https://gitcode.com/clmzz/AItutor" target="_blank">🇨🇳 打开 GitCode 仓库</a>
         <a class="btn ghost" href="https://github.com/Clmzz-gra/AItutor" target="_blank">打开 GitHub 仓库</a>
         <p class="sub" style="margin-top:8px">国内学生优先用 <a href="https://gitee.com/clmzz/AItutor" target="_blank">Gitee</a> / <a href="https://gitcode.com/clmzz/AItutor" target="_blank">GitCode</a> 仓库，避免 GitHub 需要梯子。</p>
+        <h3>解压到任意位置</h3>
+        <p>下载得到的是一个 <strong>ZIP 压缩包</strong>。右键 → <strong>“解压到当前文件夹”</strong>（或“全部解压”），解压后会得到一个文件夹，<strong>记住这个文件夹的位置</strong>，后面所有操作都在这个文件夹里进行。</p>
+        <div class="tip">💡 解压后请确认文件夹里有 <code>一键安装.bat</code>、<code>体检.bat</code>、<code>install.html</code> 这些文件，说明解压成功。</div>
         <div class="img-box">📷 截图占位 1：下载页（图片放 assets/install/step1-1.png）</div>
         <div class="img-box">📷 截图占位 2：解压后的文件夹（图片放 assets/install/step1-2.png）</div>
       </div>
@@ -83,30 +87,43 @@
   </div>
 
   <div class="card">
-    <h2>② 一键安装</h2>
-    <p class="sub">用本地安装向导，自动装好 Git / Python / Obsidian / Obsidian CLI / MinerU CLI，并自动体检。</p>
+    <h2>② 一键安装（Windows）</h2>
+    <p class="sub">双击一个文件，自动装好 Git / Python / Obsidian / Obsidian CLI / MinerU CLI，装完自动体检。</p>
     <div class="step">
       <div class="num">2</div>
       <div class="body">
-        <h3>双击 <code>安装向导.hta</code></h3>
-        <p>打开项目文件夹，<strong>直接双击 <code>安装向导.hta</code></strong>，会弹出本地向导窗口。</p>
-        <div class="note">🔒 出于安全考虑，浏览器无法运行安装程序，所以不能从网页直接启动；请用文件管理器双击 <code>安装向导.hta</code>。</div>
-        <div class="tip">💡 若 MinerU 或 Obsidian 装不上，脚本会自动换多个源/渠道，或提示你浏览器手动下载，不会一直卡住。</div>
-        <div class="img-box">📷 截图占位 1：安装向导界面（图片放 assets/install/step2-1.png）</div>
+        <h3>双击根目录的 <code>一键安装.bat</code></h3>
+        <p>打开刚才解压出来的文件夹，找到 <strong><code>一键安装.bat</code></strong>，<strong>双击它</strong>即可。全程<strong>不需要输入任何命令</strong>。</p>
+        <div class="danger-box">🔒 <strong>注意：浏览器无法运行安装程序。</strong> 请务必用文件管理器（“此电脑”/“我的电脑”）打开文件夹后双击 <code>一键安装.bat</code>，不要在浏览器里点它。</div>
+        <h3>脚本会自动做这些事</h3>
+        <ul>
+          <li>检查并安装 <strong>Git</strong>（没有就自动装）</li>
+          <li>检查并安装 <strong>Python</strong>（没有就自动装）</li>
+          <li>检查并安装 <strong>Obsidian</strong>（依次尝试 winget → choco → scoop → 浏览器手动下载）</li>
+          <li>启用 <strong>Obsidian CLI</strong>（命令行界面）</li>
+          <li>安装 <strong>MinerU CLI</strong>（教材 OCR / PDF 转 Markdown，依次尝试 清华/阿里/中科大/豆瓣/官方 多个源）</li>
+          <li>装完<strong>自动运行体检</strong>（doctor）</li>
+        </ul>
+        <h3>安装过程中会看到什么</h3>
+        <p>会弹出黑色命令行窗口，显示安装进度。第一次安装可能需要几分钟，<strong>请耐心等待，不要中途关掉窗口</strong>。如果某个软件装不上，脚本会自动换别的源/渠道，或提示你手动下载，不会一直卡住。</p>
+        <div class="tip">💡 若提示“是否允许更改设备”，点 <strong>“是”</strong> 即可。若杀毒软件询问，选择“允许/信任”。</div>
+        <div class="img-box">📷 截图占位 1：双击 一键安装.bat（图片放 assets/install/step2-1.png）</div>
         <div class="img-box">📷 截图占位 2：正在自动安装（图片放 assets/install/step2-2.png）</div>
+        <div class="img-box">📷 截图占位 3：安装完成自动体检（图片放 assets/install/step2-3.png）</div>
       </div>
     </div>
   </div>
 
   <div class="card">
     <h2>③ 安装 ZCode（默认推荐）</h2>
-    <p class="sub">ZCode 最简单，原生读取 AGENTS.md。</p>
+    <p class="sub">ZCode 最简单，原生读取 AGENTS.md，配置最少。</p>
     <div class="step">
       <div class="num">3</div>
       <div class="body">
         <h3>去官网安装 ZCode</h3>
-        <p>在向导里点“打开 ZCode 官网”，或直接访问：</p>
+        <p>点击下面按钮打开官网，下载并安装 ZCode（安装后<strong>重开终端/命令行</strong>即可生效）。</p>
         <a class="btn" href="https://zcode.z.ai/" target="_blank">打开 ZCode 官网</a>
+        <p class="sub" style="margin-top:8px">也可以自行选择 Claude Code / Codex / Trae / dsh 等其它工具，本项目不做检测，装好后重开终端即可。</p>
         <div class="img-box">📷 截图占位 1：ZCode 官网首页（图片放 assets/install/step3-1.png）</div>
         <div class="img-box">📷 截图占位 2：安装完成（图片放 assets/install/step3-2.png）</div>
       </div>
@@ -119,7 +136,10 @@
     <div class="step">
       <div class="num">4</div>
       <div class="body">
-        <h3>在 ZCode 里填写模型字段</h3>
+        <h3>第一步：申请一个免费 Key</h3>
+        <p>打开 <a href="https://open.bigmodel.cn/" target="_blank">open.bigmodel.cn</a> 注册并申请一个 <strong>API Key</strong>（免费，只需申请一次）。</p>
+        <h3>第二步：在 ZCode 里填写模型字段</h3>
+        <p>在 ZCode 的模型设置里，按下表填写：</p>
         <table>
           <tr><th>字段</th><th>填写值</th></tr>
           <tr><td>名称</td><td>智谱 GLM-4.5-Flash</td></tr>
@@ -133,8 +153,9 @@
         </table>
         <div class="tip">⚠️ <strong>这是免费模型，能力有限</strong>：适合日常问答、学习推进、常规讲解；复杂长文本、深度推理建议改用更强（付费）模型。</div>
         <a class="btn ghost" href="guide/免费模型配置.md" target="_blank">查看详细配置</a>
-        <div class="img-box">📷 截图占位 1：ZCode 模型配置页（图片放 assets/install/step4-1.png）</div>
-        <div class="img-box">📷 截图占位 2：填好后的样子（图片放 assets/install/step4-2.png）</div>
+        <div class="img-box">📷 截图占位 1：申请 Key（图片放 assets/install/step4-1.png）</div>
+        <div class="img-box">📷 截图占位 2：ZCode 模型配置页（图片放 assets/install/step4-2.png）</div>
+        <div class="img-box">📷 截图占位 3：填好后的样子（图片放 assets/install/step4-3.png）</div>
       </div>
     </div>
   </div>
@@ -145,9 +166,12 @@
     <div class="step">
       <div class="num">5</div>
       <div class="body">
-        <h3>体检通过后开始学习</h3>
-        <p>一键安装结束会自动体检；也可随时双击根目录 <code>体检.bat</code>。</p>
-        <p>全部 <span class="ok">[OK]</span> 后，对 AI 说：<strong>“开始学习〈学科名〉”</strong>。</p>
+        <h3>运行体检</h3>
+        <p>一键安装结束会自动体检；也可以随时<strong>双击根目录的 <code>体检.bat</code></strong>（或运行 <code>python tools/doctor.py</code>）。</p>
+        <p>看到全部 <span class="ok">[OK]</span> 就说明环境没问题。</p>
+        <h3>开始学习</h3>
+        <p>在 ZCode 里打开本项目文件夹，对 AI 说：<strong>“开始学习〈学科名〉”</strong>（例如“开始学习概率论”）。</p>
+        <p>AI 会自动建 checkpoint 快照、把讲解/讨论/习题写成文章、按“初始化 → 创建文章 → 维护文章”驱动学习，并沉淀为正式资产。</p>
         <div class="img-box">📷 截图占位 1：体检结果全 OK（图片放 assets/install/step5-1.png）</div>
         <div class="img-box">📷 截图占位 2：开始学习对话（图片放 assets/install/step5-2.png）</div>
       </div>
@@ -157,13 +181,16 @@
   <div class="card">
     <h2>常见问题</h2>
     <ul>
-      <li><span class="warn">MinerU 装不上？</span> 脚本会依次尝试 清华/阿里/中科大/豆瓣/官方 多个源。</li>
-      <li><span class="warn">Obsidian 超时？</span> 脚本会依次尝试 winget → choco → scoop → 浏览器手动下载。</li>
+      <li><span class="warn">双击 一键安装.bat 没反应？</span> 右键 → “以管理员身份运行”；若被系统拦截，点“更多信息 → 仍要运行”。</li>
+      <li><span class="warn">MinerU 装不上？</span> 脚本会依次尝试 清华/阿里/中科大/豆瓣/官方 多个源，一般总有一个能成功。</li>
+      <li><span class="warn">Obsidian 超时？</span> 脚本会依次尝试 winget → choco → scoop → 浏览器手动下载，不会卡住。</li>
       <li><span class="warn">输出乱码？</span> 已统一 UTF-8 编码，正常 Windows 下应显示正常。</li>
-      <li><span class="warn">ZCode 没检测到？</span> 脚本不做检测，直接去官网安装即可。</li>
-      <li><span class="warn">浏览器点“打开安装向导”变成下载？</span> 浏览器不能运行安装程序，请直接双击 <code>安装向导.hta</code>。</li>
+      <li><span class="warn">ZCode 没检测到？</span> 脚本不做检测，直接去官网安装即可，装好重开终端。</li>
+      <li><span class="warn">浏览器点链接变成下载/打不开？</span> 浏览器不能运行安装程序，请用文件管理器打开文件夹后双击 <code>一键安装.bat</code>。</li>
+      <li><span class="warn">体检有 [FAIL]？</span> 按体检提示操作（如重开 Obsidian、重开终端），再重新双击 <code>体检.bat</code>。</li>
     </ul>
   </div>
+
   <div class="card" style="text-align:center;background:linear-gradient(135deg,#fff7ed,#fffbeb);border-color:#fcd34d">
     <h2 style="justify-content:center">⭐ 如果对你有用，请点个 Star</h2>
     <p class="sub" style="text-align:center">你的 Star 是我继续更新的动力～</p>
@@ -174,6 +201,6 @@
 
 </main>
 
-<footer>AItutor · 一键安装教程 · 有问题可联系项目维护者</footer>
+<footer>AItutor · 安装教程 · 有问题可联系项目维护者</footer>
 </body>
 </html>
