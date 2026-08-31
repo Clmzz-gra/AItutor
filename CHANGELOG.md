@@ -11,8 +11,8 @@
 - **默认 harness 定为 ZCode**（最简，原生读 `AGENTS.md`）：README、学生指南、setup 文档与 bootstrap 脚本同步推荐；Claude Code / Codex 改为**按需安装**（脚本只给出 npm 命令，不再自动装）
 - README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置；并进一步面向“只会解压和打开文件”的用户（下载 ZIP → 解压 → 双击根目录 `一键安装.bat`）
 - README 补充国内托管提示（GitHub 不稳定时可改用 Gitee / GitCode），并升级版本号 0.2.4
-- 一键安装脚本检测到未装 ZCode 时，直接打开 ZCode 官网 https://zcode.z.ai/
-- 增强 ZCode 检测：支持 PATH、常见安装目录、`ZCODE_BIN` / `ZCODE_HOME` 环境变量，解决“已装 ZCode 但脚本没检测到”的情况
+- ZCode 不做检测，仅提供官网链接 https://zcode.z.ai/（不再误报/不再自动打开）
+- 新增根目录 `体检.bat`；一键安装结束后自动运行 doctor 体检
 
 ## 0.2.3 — 2026-08-29
 

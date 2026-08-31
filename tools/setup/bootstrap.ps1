@@ -36,31 +36,6 @@ function Have($cmd)       { return [bool](Get-Command $cmd -ErrorAction Silently
 function Open-Url($url) {
     try { Start-Process $url } catch { Write-Tip "请手动打开：$url" }
 }
-function Test-ZCode {
-    # ZCode 可能不在 PATH 里（桌面版），多找几个常见安装位置
-    if (Have "zcode") { return $true }
-    if (Have "ZCode") { return $true }
-    if ($env:ZCODE_BIN -and (Test-Path $env:ZCODE_BIN)) { return $true }
-    if ($env:ZCODE_HOME -and (Test-Path (Join-Path $env:ZCODE_HOME "zcode.exe"))) { return $true }
-    $candidates = @(
-        "$env:LOCALAPPDATA\Programs\ZCode\zcode.exe",
-        "$env:LOCALAPPDATA\Programs\ZhipuAI\ZCode\zcode.exe",
-        "$env:LOCALAPPDATA\ZCode\zcode.exe",
-        "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Zhipu-AI.ZCode_*\zcode.exe",
-        "$env:LOCALAPPDATA\Microsoft\WinGet\Links\zcode.exe",
-        "${env:ProgramFiles}\ZCode\zcode.exe",
-        "${env:ProgramFiles}\ZhipuAI\ZCode\zcode.exe",
-        "${env:ProgramFiles(x86)}\ZCode\zcode.exe"
-    )
-    foreach ($p in $candidates) {
-        if ($p -and (Test-Path $p)) { return $true }
-    }
-    return $false
-}
-function Test-Harness($cmd) {
-    if ($cmd -eq "zcode") { return Test-ZCode }
-    return Have $cmd
-}
 
 function Download-File($url, $out) {
     try {
@@ -192,7 +167,6 @@ if (Have "obsidian") {
 # ---- 5. AI harness（默认推荐 ZCode；任装其一；需各自登录账号） ----
 Write-Step "检查 AI harness（默认推荐 ZCode；任选其一即可）"
 $harnesses = @(
-    @{ Name = "ZCode";       Cmd = "zcode";  Tip = "默认推荐：官方渠道安装（本项目即在 ZCode 中验证）" },
     @{ Name = "Claude Code"; Cmd = "claude"; Tip = "按需安装（npm + npmmirror 源，需用时手动执行）" },
     @{ Name = "Codex CLI";   Cmd = "codex";  Tip = "按需安装（npm + npmmirror 源，需用时手动执行）" },
     @{ Name = "dsh";         Cmd = "dsh";    Tip = "DeepSeek harness，按你的获取渠道安装" },
@@ -200,9 +174,11 @@ $harnesses = @(
 )
 $found = 0
 foreach ($h in $harnesses) {
-    if (Test-Harness $h.Cmd) { Write-Ok "$($h.Name) 已检测到（$($h.Cmd)）"; $found++ }
+    if (Have $h.Cmd) { Write-Ok "$($h.Name) 已检测到（$($h.Cmd)）"; $found++ }
     else { Write-Miss "$($h.Name) 未检测到 —— $($h.Tip)" }
 }
+
+Write-Tip "ZCode（默认推荐 harness）：本脚本不做检测，官网 https://zcode.z.ai/"
 
 if (-not $CheckOnly) {
     Write-Tip "Claude Code / Codex CLI 改为按需安装：需用时手动执行（国内自动用 npmmirror 源）："
@@ -215,17 +191,8 @@ if (-not $CheckOnly) {
     }
     Write-Tip "需要 Node.js/npm 前置；默认推荐 ZCode，一般无需安装 Claude Code / Codex。"
 }
-if ($found -eq 0) { Write-Tip "默认推荐装 ZCode（最简，原生读 AGENTS.md）；以上任装其一即可，装好后重开终端再跑一次本脚本确认" }
+if ($found -eq 0) { Write-Tip "默认推荐 ZCode（官网 https://zcode.z.ai/）；以上 harness 任装其一即可，装好后重开终端再跑一次本脚本确认" }
 else { Write-Ok "已有 $found 个 harness 可用" }
-if (-not (Test-ZCode)) {
-    Write-Tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"
-    if (-not $CheckOnly) {
-        Write-Tip "正在打开 ZCode 官网：https://zcode.z.ai/"
-        Open-Url "https://zcode.z.ai/"
-    } else {
-        Write-Tip "ZCode 官网：https://zcode.z.ai/"
-    }
-}
 
 # ---- 6. 下一步 ----
 Write-Step "下一步"

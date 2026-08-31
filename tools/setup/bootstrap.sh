@@ -21,45 +21,6 @@ tip()  { printf '  \033[90m[提示]\033[0m %s\n' "$1"; }
 step() { printf '\n== %s ==\n' "$1"; }
 have() { command -v "$1" >/dev/null 2>&1; }
 
-# ZCode 可能不在 PATH（桌面版），多找常见安装位置
-test_zcode() {
-  have zcode && return 0
-  have ZCode && return 0
-  [ -n "${ZCODE_BIN:-}" ] && [ -f "$ZCODE_BIN" ] && return 0
-  if [ -n "${ZCODE_HOME:-}" ]; then
-    [ -f "$ZCODE_HOME/zcode.exe" ] && return 0
-    [ -x "$ZCODE_HOME/zcode" ] && return 0
-  fi
-  # Windows
-  if [ -n "${LOCALAPPDATA:-}" ]; then
-    for p in \
-      "$LOCALAPPDATA/Programs/ZCode/zcode.exe" \
-      "$LOCALAPPDATA/Programs/ZhipuAI/ZCode/zcode.exe" \
-      "$LOCALAPPDATA/ZCode/zcode.exe" \
-      "$LOCALAPPDATA/Microsoft/WinGet/Links/zcode.exe"; do
-      [ -f "$p" ] && return 0
-    done
-    for d in "$LOCALAPPDATA"/Microsoft/WinGet/Packages/Zhipu-AI.ZCode_*/; do
-      [ -f "$d/zcode.exe" ] && return 0
-      [ -d "$d" ] || continue
-    done
-  fi
-  # macOS
-  [ -x "/Applications/ZCode.app/Contents/MacOS/zcode" ] && return 0
-  [ -x "$HOME/Applications/ZCode.app/Contents/MacOS/zcode" ] && return 0
-  # Linux
-  for p in /usr/local/bin/zcode /usr/bin/zcode /opt/ZCode/zcode "$HOME/.local/bin/zcode"; do
-    [ -x "$p" ] && return 0
-  done
-  return 1
-}
-harness_have() { # $1 命令名
-  case "$1" in
-    zcode) test_zcode ;;
-    *)     have "$1" ;;
-  esac
-}
-
 case "$(uname -s)" in
   MINGW*|MSYS*|CYGWIN*) OS=windows ;;
   Darwin)               OS=mac ;;
@@ -164,14 +125,15 @@ fi
 step "检查 AI harness（默认推荐 ZCode；任选其一即可）"
 found=0
 check_harness() { # $1 显示名 $2 命令 $3 提示
-  if harness_have "$2"; then ok "$1 已检测到（$2）"; found=$((found+1))
+  if have "$2"; then ok "$1 已检测到（$2）"; found=$((found+1))
   else miss "$1 未检测到 —— $3"; fi
 }
-check_harness "ZCode"       "zcode"  "默认推荐：官方渠道安装（本项目即在 ZCode 中验证）"
 check_harness "Claude Code" "claude" "按需安装（npm，国内走 npmmirror 源，需用时手动执行）"
 check_harness "Codex CLI"   "codex"  "按需安装（npm，国内走 npmmirror 源，需用时手动执行）"
 check_harness "dsh"         "dsh"    "DeepSeek harness，按你的获取渠道安装"
 check_harness "Trae"        "trae"   "官网下载：https://www.trae.ai"
+
+tip "ZCode（默认推荐 harness）：本脚本不做检测，官网 https://zcode.z.ai/"
 
 if [ "$CHECK_ONLY" = 0 ]; then
   tip "Claude Code / Codex CLI 改为按需安装：需用时手动执行（国内自动用 npmmirror 源）："
@@ -184,23 +146,8 @@ if [ "$CHECK_ONLY" = 0 ]; then
   fi
   tip "需要 Node.js/npm 前置；默认推荐 ZCode，一般无需安装 Claude Code / Codex。"
 fi
-if [ "$found" -eq 0 ]; then tip "默认推荐装 ZCode（最简，原生读 AGENTS.md）；以上任装其一即可，装好后重开终端再跑一次本脚本确认"
+if [ "$found" -eq 0 ]; then tip "默认推荐 ZCode（官网 https://zcode.z.ai/）；以上 harness 任装其一即可，装好后重开终端再跑一次本脚本确认"
 else ok "已有 $found 个 harness 可用"; fi
-if ! test_zcode; then
-  tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"
-  if [ "$CHECK_ONLY" = 0 ]; then
-    tip "正在尝试打开 ZCode 官网：https://zcode.z.ai/"
-    case "$(uname -s)" in
-      MINGW*|MSYS*|CYGWIN*) ( cmd //c start "" "https://zcode.z.ai/" >/dev/null 2>&1 || true ) ;;
-      Darwin*) ( open "https://zcode.z.ai/" >/dev/null 2>&1 || true ) ;;
-      *) ( xdg-open "https://zcode.z.ai/" >/dev/null 2>&1 \
-           || sensible-browser "https://zcode.z.ai/" >/dev/null 2>&1 \
-           || true ) ;;
-    esac
-  else
-    tip "ZCode 官网：https://zcode.z.ai/"
-  fi
-fi
 
 # ---- 6. 下一步 ----
 step "下一步"

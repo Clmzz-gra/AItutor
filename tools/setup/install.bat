@@ -15,6 +15,12 @@ echo 默认推荐 ZCode；Claude Code / Codex 按需手动安装。
 echo.
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0bootstrap.ps1" %*
 set EXIT_CODE=%ERRORLEVEL%
+echo.
+if /I not "%1"=="-CheckOnly" (
+  echo === 安装完成，正在自动运行体检（doctor）... ===
+  python tools\doctor.py
+  set EXIT_CODE=%ERRORLEVEL%
+)
 
 echo.
 echo ============================================
