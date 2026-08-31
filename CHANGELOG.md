@@ -16,7 +16,7 @@
 - 新增根目录 `体检.bat`；一键安装结束后自动运行 doctor 体检
 - 修复输出乱码：bat 统一 ASCII + `chcp 65001`，doctor.py 统一 UTF-8 输出，PowerShell 设 UTF8 OutputEncoding，全链路统一编码
 - 一键安装新增 **MinerU CLI**（`pip install mineru-open-api`，教材 OCR / PDF → Markdown）
-- 修复安装可靠性：MinerU 安装使用清华 pip 源 + 超时/重试；Obsidian winget 安装加超时停止，失败/超时自动给出浏览器手动兜底
+- 修复安装可靠性：MinerU 依次尝试 清华/阿里/中科大/豆瓣/官方 多个 pip 源；Obsidian 依次尝试 winget → choco → scoop → 浏览器手动下载，只要一个成功即可
 
 ## 0.2.3 — 2026-08-29
 

@@ -153,17 +153,25 @@ if ($mineruOk) {
 } elseif ($CheckOnly) {
     Write-Miss "未安装"; Write-Tip "安装命令：pip install mineru-open-api（详见 https://mineru.net/ecosystem?tab=cli）"
 } elseif ($py) {
-    Write-Host "  正在安装 MinerU CLI（pip install mineru-open-api）…"
-    $pipArgs = @("-m", "pip", "install", "--quiet", "--default-timeout=60", "mineru-open-api")
-    if ($China) { $pipArgs += @("-i", "https://pypi.tuna.tsinghua.edu.cn/simple") }
-    $mineruOk = $false
-    for ($attempt = 1; $attempt -le 2 -and -not $mineruOk; $attempt++) {
-        & $py $pipArgs
-        if ($LASTEXITCODE -eq 0) { $mineruOk = $true }
-        elseif ($attempt -lt 2) { Write-Tip "  第 $attempt 次安装失败，重试中（国内请用清华源）…" }
+    Write-Host "  正在安装 MinerU CLI（依次尝试多个源，只要一个可用即可）…"
+    $mirrors = @()
+    if ($China) {
+        $mirrors = @(
+            "https://pypi.tuna.tsinghua.edu.cn/simple",
+            "https://mirrors.aliyun.com/pypi/simple/",
+            "https://pypi.mirrors.ustc.edu.cn/simple/",
+            "https://pypi.doubanio.com/simple/"
+        )
     }
-    if ($mineruOk) { Write-Ok "MinerU CLI 安装完成" }
-    else { Write-Miss "安装失败；可手动执行：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple mineru-open-api" }
+    $mineruOk = $false
+    foreach ($mirror in ($mirrors + @("official"))) {
+        $pipArgs = @("-m", "pip", "install", "--quiet", "--default-timeout=60", "mineru-open-api")
+        if ($mirror -ne "official") { $pipArgs += @("-i", $mirror) }
+        Write-Tip "  尝试源：$mirror"
+        & $py $pipArgs 2>&1 | Out-Null
+        if ($LASTEXITCODE -eq 0) { $mineruOk = $true; Write-Ok "MinerU CLI 安装完成（源：$mirror）"; break }
+    }
+    if (-not $mineruOk) { Write-Miss "安装失败；可手动执行：pip install -i https://mirrors.aliyun.com/pypi/simple/ mineru-open-api" }
 } else {
     Write-Miss "未检测到 Python，无法安装 MinerU CLI"
 }
@@ -176,8 +184,20 @@ if ($obsidianInstalled) {
     Write-Miss "未安装"; Write-Tip "winget install --id Obsidian.Obsidian -e 或 https://obsidian.md/download"
 } elseif ($haveWinget) {
     Write-Host "  正在通过 winget 安装：Obsidian.Obsidian（官方无国内镜像，安装包在 GitHub，若超时会停止并给兜底）…"
+    $obsOk = $false
     $rc = Invoke-WingetWithTimeout "install --id Obsidian.Obsidian -e --silent --accept-source-agreements --accept-package-agreements"
-    if ($rc -eq 0) { Write-Ok "安装完成" } else { Write-Miss "安装失败/超时（$rc）" }
+    if ($rc -eq 0) { Write-Ok "安装完成"; $obsOk = $true } else { Write-Miss "winget 安装失败/超时（$rc）" }
+    if (-not $obsOk -and (Have "choco")) {
+        Write-Host "  尝试用 chocolatey 安装 Obsidian…"
+        choco install obsidian -y --no-progress | Out-Null
+        if ($LASTEXITCODE -eq 0) { Write-Ok "choco 安装完成"; $obsOk = $true }
+    }
+    if (-not $obsOk -and (Have "scoop")) {
+        Write-Host "  尝试用 scoop 安装 Obsidian…"
+        scoop install obsidian | Out-Null
+        if ($LASTEXITCODE -eq 0) { Write-Ok "scoop 安装完成"; $obsOk = $true }
+    }
+    if (-not $obsOk) { Write-Miss "自动安装未能成功（winget/choco/scoop），请用浏览器手动下载" }
 } else {
     Write-Miss "未安装"
 }

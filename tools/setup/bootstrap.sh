@@ -101,15 +101,25 @@ if have python3; then PY_CMD=python3; elif have python; then PY_CMD=python; fi
 if have mineru-open-api || have mineru; then
   ok "MinerU CLI 已安装"
 elif [ "$CHECK_ONLY" = 0 ] && [ -n "$PY_CMD" ]; then
-  tip "正在安装 MinerU CLI（pip install mineru-open-api）..."
-  PIP_ARGS=()
-  [ "$CHINA" = 1 ] && PIP_ARGS=(-i https://pypi.tuna.tsinghua.edu.cn/simple)
+  tip "正在安装 MinerU CLI（依次尝试多个源，只要一个可用即可）..."
+  MIRRORS=()
+  [ "$CHINA" = 1 ] && MIRRORS=(
+    "https://pypi.tuna.tsinghua.edu.cn/simple"
+    "https://mirrors.aliyun.com/pypi/simple/"
+    "https://pypi.mirrors.ustc.edu.cn/simple/"
+    "https://pypi.doubanio.com/simple/"
+  )
   min_ok=0
-  for attempt in 1 2; do
-    "$PY_CMD" -m pip install --quiet --default-timeout=60 "${PIP_ARGS[@]}" mineru-open-api && { min_ok=1; break; }
-    [ "$attempt" = 1 ] && tip "第 1 次安装失败，重试中（国内用清华源）..."
+  for mirror in "${MIRRORS[@]}" official; do
+    tip "  尝试源：$mirror"
+    if [ "$mirror" = official ]; then
+      "$PY_CMD" -m pip install --quiet --default-timeout=60 mineru-open-api >/dev/null 2>&1
+    else
+      "$PY_CMD" -m pip install --quiet --default-timeout=60 -i "$mirror" mineru-open-api >/dev/null 2>&1
+    fi
+    if [ $? -eq 0 ]; then min_ok=1; ok "MinerU CLI 安装完成（源：$mirror）"; break; fi
   done
-  if [ "$min_ok" = 1 ]; then ok "MinerU CLI 安装完成"; else miss "安装失败；可手动：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple mineru-open-api"; fi
+  if [ "$min_ok" = 0 ]; then miss "安装失败；可手动：pip install -i https://mirrors.aliyun.com/pypi/simple/ mineru-open-api"; fi
 elif [ -n "$PY_CMD" ]; then
   miss "MinerU CLI 未安装"; tip "安装命令：pip install mineru-open-api（详见 https://mineru.net/ecosystem?tab=cli）"
 else
@@ -130,7 +140,16 @@ else
   if [ "$CHECK_ONLY" = 0 ]; then
     case "$PKG" in
       brew)   brew install --cask obsidian && ok "安装完成" ;;
-      winget) if winget_install_timeout "Obsidian.Obsidian"; then ok "安装完成"; else miss "winget 安装失败/超时"; tip "建议用浏览器打开 https://obsidian.md/download 手动下载（支持断点续传）"; fi ;;
+      winget)
+        if winget_install_timeout "Obsidian.Obsidian"; then
+          ok "安装完成"
+        else
+          miss "winget 安装失败/超时"
+          obs_ok=0
+          if have choco; then tip "改用 chocolatey 安装..."; choco install obsidian -y --no-progress >/dev/null 2>&1 && { ok "choco 安装完成"; obs_ok=1; }; fi
+          if [ "$obs_ok" = 0 ] && have scoop; then tip "改用 scoop 安装..."; scoop install obsidian >/dev/null 2>&1 && { ok "scoop 安装完成"; obs_ok=1; }; fi
+          if [ "$obs_ok" = 0 ]; then miss "自动安装未成功（winget/choco/scoop）"; tip "建议用浏览器打开 https://obsidian.md/download 手动下载（支持断点续传）"; fi
+        fi ;;
       *)      tip "手动下载：https://obsidian.md/download（Linux 提供 .deb/AppImage）" ;;
     esac
   else

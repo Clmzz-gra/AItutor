@@ -37,6 +37,9 @@ bash tools/setup/bootstrap.sh
 5. **Obsidian CLI** —— AI 管理 vault 的通道（需在 Obsidian 界面开启一次：Settings → About → Command line interface）
 6. **AI harness（不做检测，按需自行安装）** —— 脚本只列出各 harness 官方网址（ZCode / Claude Code / Codex / dsh / Trae）；Claude Code / Codex 按需手动安装。
 
+> 稳健策略：MinerU CLI 依次尝试 清华/阿里/中科大/豆瓣/官方 多个源；Obsidian 依次尝试 winget → choco → scoop → 浏览器手动下载，只要一个成功即可。
+
+
 ## 安装后（学生只需 3 步；默认推荐 ZCode）
 0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装（官网 https://zcode.z.ai/，脚本不做任何检测、只给链接）；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
 1. **打开本仓库为 Obsidian vault**：Obsidian → Open folder as vault → 选项目根目录
