@@ -36,7 +36,7 @@ bash tools/setup/bootstrap.sh
 5. **AI harness（默认推荐 ZCode）** —— 脚本会检测 ZCode（最简，原生读 `AGENTS.md`）；Claude Code / Codex 改为**按需安装**（需用时手动 npm）；dsh / Trae 按各自渠道装
 
 ## 安装后（学生只需 3 步；默认推荐 ZCode）
-0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
+0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装（官网 https://zcode.z.ai/；脚本检测到未装 ZCode 时会自动打开官网）；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
 1. **打开本仓库为 Obsidian vault**：Obsidian → Open folder as vault → 选项目根目录
 2. **确认 CLI**：`obsidian help` 能正常输出
 3. **配默认免费模型**：申请一个智谱 GLM-4.5-Flash Key（免费档中能力最强、永久免费），把 Base URL / Key / 模型名填进你的 harness，详见 `guide/免费模型配置.md`

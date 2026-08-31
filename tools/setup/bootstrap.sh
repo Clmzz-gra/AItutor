@@ -147,7 +147,21 @@ if [ "$CHECK_ONLY" = 0 ]; then
 fi
 if [ "$found" -eq 0 ]; then tip "默认推荐装 ZCode（最简，原生读 AGENTS.md）；以上任装其一即可，装好后重开终端再跑一次本脚本确认"
 else ok "已有 $found 个 harness 可用"; fi
-if ! have zcode; then tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"; fi
+if ! have zcode; then
+  tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"
+  if [ "$CHECK_ONLY" = 0 ]; then
+    tip "正在尝试打开 ZCode 官网：https://zcode.z.ai/"
+    case "$(uname -s)" in
+      MINGW*|MSYS*|CYGWIN*) ( cmd //c start "" "https://zcode.z.ai/" >/dev/null 2>&1 || true ) ;;
+      Darwin*) ( open "https://zcode.z.ai/" >/dev/null 2>&1 || true ) ;;
+      *) ( xdg-open "https://zcode.z.ai/" >/dev/null 2>&1 \
+           || sensible-browser "https://zcode.z.ai/" >/dev/null 2>&1 \
+           || true ) ;;
+    esac
+  else
+    tip "ZCode 官网：https://zcode.z.ai/"
+  fi
+fi
 
 # ---- 6. 下一步 ----
 step "下一步"

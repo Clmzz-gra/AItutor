@@ -11,6 +11,7 @@
 - **默认 harness 定为 ZCode**（最简，原生读 `AGENTS.md`）：README、学生指南、setup 文档与 bootstrap 脚本同步推荐；Claude Code / Codex 改为**按需安装**（脚本只给出 npm 命令，不再自动装）
 - README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置
 - README 补充国内托管提示（GitHub 不稳定时可改用 Gitee / GitCode），并升级版本号 0.2.4
+- 一键安装脚本检测到未装 ZCode 时，直接打开 ZCode 官网 https://zcode.z.ai/
 
 ## 0.2.3 — 2026-08-29
 

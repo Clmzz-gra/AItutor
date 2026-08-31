@@ -33,6 +33,9 @@ function Write-Ok($msg)   { Write-Host "  [OK] $msg" -ForegroundColor Green }
 function Write-Miss($msg) { Write-Host "  [缺] $msg" -ForegroundColor Yellow }
 function Write-Tip($msg)  { Write-Host "  [提示] $msg" -ForegroundColor Gray }
 function Have($cmd)       { return [bool](Get-Command $cmd -ErrorAction SilentlyContinue) }
+function Open-Url($url) {
+    try { Start-Process $url } catch { Write-Tip "请手动打开：$url" }
+}
 
 function Download-File($url, $out) {
     try {
@@ -189,7 +192,15 @@ if (-not $CheckOnly) {
 }
 if ($found -eq 0) { Write-Tip "默认推荐装 ZCode（最简，原生读 AGENTS.md）；以上任装其一即可，装好后重开终端再跑一次本脚本确认" }
 else { Write-Ok "已有 $found 个 harness 可用" }
-if (-not (Have "zcode")) { Write-Tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）" }
+if (-not (Have "zcode")) {
+    Write-Tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"
+    if (-not $CheckOnly) {
+        Write-Tip "正在打开 ZCode 官网：https://zcode.z.ai/"
+        Open-Url "https://zcode.z.ai/"
+    } else {
+        Write-Tip "ZCode 官网：https://zcode.z.ai/"
+    }
+}
 
 # ---- 6. 下一步 ----
 Write-Step "下一步"
