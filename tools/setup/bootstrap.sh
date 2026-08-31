@@ -87,6 +87,21 @@ else
   fi
 fi
 
+# ---- 2.5 MinerU CLI（教材 OCR / PDF → Markdown，可选） ----
+step "检查 MinerU CLI（教材 OCR 用，可选）"
+PY_CMD=""
+if have python3; then PY_CMD=python3; elif have python; then PY_CMD=python; fi
+if have mineru-open-api || have mineru; then
+  ok "MinerU CLI 已安装"
+elif [ "$CHECK_ONLY" = 0 ] && [ -n "$PY_CMD" ]; then
+  tip "正在安装 MinerU CLI（pip install mineru-open-api）..."
+  "$PY_CMD" -m pip install --quiet mineru-open-api && ok "MinerU CLI 安装完成" || miss "安装失败，可手动：pip install mineru-open-api"
+elif [ -n "$PY_CMD" ]; then
+  miss "MinerU CLI 未安装"; tip "安装命令：pip install mineru-open-api（详见 https://mineru.net/ecosystem?tab=cli）"
+else
+  miss "未检测到 Python，无法安装 MinerU CLI"; tip "先安装 Python"
+fi
+
 # ---- 3. Obsidian 本体（官方无国内镜像，安装包在 GitHub） ----
 step "检查 Obsidian（笔记与知识图谱）"
 obsidian_installed=0

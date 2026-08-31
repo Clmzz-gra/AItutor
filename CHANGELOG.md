@@ -15,6 +15,7 @@
 - 所有 harness 均不做检测，只列出官方网址（ZCode / Claude Code / Codex / dsh / Trae）
 - 新增根目录 `体检.bat`；一键安装结束后自动运行 doctor 体检
 - 修复输出乱码：bat 统一 ASCII + `chcp 65001`，doctor.py 统一 UTF-8 输出，PowerShell 设 UTF8 OutputEncoding，全链路统一编码
+- 一键安装新增 **MinerU CLI**（`pip install mineru-open-api`，教材 OCR / PDF → Markdown）
 
 ## 0.2.3 — 2026-08-29
 
