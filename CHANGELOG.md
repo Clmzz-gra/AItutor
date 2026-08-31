@@ -14,7 +14,7 @@
 - ZCode 不做检测，仅提供官网链接 https://zcode.z.ai/（不再误报/不再自动打开）
 - 所有 harness 均不做检测，只列出官方网址（ZCode / Claude Code / Codex / dsh / Trae）
 - 新增根目录 `体检.bat`；一键安装结束后自动运行 doctor 体检
-- 修复 doctor.py 在 Windows 控制台的中文乱码（移除强制 UTF-8 输出）
+- 修复输出乱码：bat 统一 ASCII + `chcp 65001`，doctor.py 统一 UTF-8 输出，PowerShell 设 UTF8 OutputEncoding，全链路统一编码
 
 ## 0.2.3 — 2026-08-29
 

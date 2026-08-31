@@ -22,6 +22,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+# 让输出统一 UTF-8（配合 bat 里的 chcp 65001，避免中文乱码）
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parents[1]
 
 # 项目默认免费模型（与 guide/免费模型配置.md 保持一致）
