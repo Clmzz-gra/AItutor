@@ -114,6 +114,7 @@ obsidian orphans vault=V
 5. **多 vault 漏 `vault=` 会写错库**：写入前先 `obsidian vaults verbose` 确认目标库名。
 6. **content 中本来就有字面量 `\n` 文本时会被还原成换行**（markdown 正文一般不会出现）；含"反斜杠 + n/t"的内容先确认再写入。
 7. `delete` 默认进系统回收站（可找回），加 `permanent` 才是真删。
+8. **`reload` 会重写 `graph.json` 的视图状态，可能清空 `colorGroups`（图谱配色）**：`obsidian reload vault=<名>` 会重新序列化并写回 `.obsidian/graph.json`，若图谱视图未把配色加载进内存，`colorGroups` 会被写成空数组、`scale` 被重置。**不是配色配置丢了，而是视图状态文件被覆盖成默认**。恢复：`git checkout -- .obsidian/graph.json`，或一键 `python tools/graph-style/configure.py` 重新写入统一配色。`doctor.py` 已内置“图谱配色”检查，丢了会提示。
 
 ## 6. Python 调用模板（可直接复制）
 

@@ -15,6 +15,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import shutil
@@ -210,6 +211,30 @@ def check_unclosed_topics():
     return list(opened.values()), None
 
 
+def check_graph_style():
+    """检查 Obsidian 图谱配色分组（colorGroups）是否完好。
+
+    背景：`obsidian reload` 会重写 .obsidian/graph.json 的视图状态，
+    可能把 colorGroups 清空（见 tools/obsidian-cli.md §5 踩坑）。
+    这里做一道防护，丢了就提示用 tools/graph-style/configure.py 一键恢复。
+    """
+    graph = ROOT / ".obsidian" / "graph.json"
+    if not graph.exists():
+        return ("图谱配色", False, "未找到 .obsidian/graph.json",
+                "运行 python tools/graph-style/configure.py 生成配色分组")
+    try:
+        data = json.loads(graph.read_text(encoding="utf-8"))
+    except Exception as e:  # noqa: BLE001
+        return ("图谱配色", False, f"graph.json 解析失败: {e}",
+                "运行 python tools/graph-style/configure.py 重建")
+    groups = data.get("colorGroups") or []
+    if not groups:
+        return ("图谱配色", False, "colorGroups 为空（可能被 obsidian reload 清空）",
+                "运行 python tools/graph-style/configure.py 一键恢复配色分组")
+    return ("图谱配色", True, f"colorGroups {len(groups)} 组完好",
+            "若需调整配色，运行 python tools/graph-style/configure.py")
+
+
 def check_environment():
     checks = []
     py_cmd = next((c for c in ("python", "python3") if shutil.which(c)), None)
@@ -239,6 +264,7 @@ def check_environment():
         checks.append(("默认免费模型", True,
                        f"{DEFAULT_FREE_MODEL}（默认免费）或未覆盖为付费模型",
                        f"若尚未配置模型，按 {FREE_MODEL_GUIDE} 填入一个免费 Key 即可"))
+    checks.append(check_graph_style())
     return checks
 
 
