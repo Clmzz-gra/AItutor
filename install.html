@@ -59,23 +59,12 @@
     <div class="step">
       <div class="num">2</div>
       <div class="body">
-        <h3>打开项目文件夹，双击 <code>一键安装.bat</code></h3>
-        <p>什么都不用输入，脚本会自动装好：Git、Python、Obsidian、Obsidian CLI、MinerU CLI，装完还会自动运行体检。</p>
-        <a class="btn" href="安装向导.hta">🪟 打开安装向导（推荐，可直接运行）</a>
-        <button class="btn ghost" onclick="copyPath()">📋 复制文件夹路径</button>
-        <p style="font-size:14px;color:#64748b;">推荐点“打开安装向导”，它会以本地程序方式运行，能直接打开文件夹、运行 bat；若浏览器提示下载，请选择“打开/运行”，或直接双击项目里的 <code>安装向导.hta</code>。</p>
-        <script>
-        function copyPath(){
-          var p = location.href;
-          if (p.indexOf('file://') === 0) p = decodeURIComponent(p.replace('file:///',''));
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(p).then(function(){ alert('已复制文件夹路径，粘贴到文件管理器地址栏即可'); },
-              function(){ prompt('请手动复制：', p); });
-          } else { prompt('请手动复制：', p); }
-        }
-        </script>
+        <h3>用安装向导一键操作</h3>
+        <p>什么都不用输入，向导会自动装好：Git、Python、Obsidian、Obsidian CLI、MinerU CLI，装完还会自动运行体检。</p>
+        <a class="btn" href="安装向导.hta">🪟 打开安装向导</a>
+        <p style="font-size:14px;color:#64748b;">点“打开安装向导”会以本地程序方式运行，能直接打开文件夹、运行 bat、体检；若浏览器提示下载，请选择“打开/运行”，或直接双击项目里的 <code>安装向导.hta</code>。</p>
         <!-- 截图占位 -->
-        <div class="img-box">📷 截图占位：打开文件夹后双击 一键安装.bat（图片放 assets/install/step2.png）</div>
+        <div class="img-box">📷 截图占位：安装向导界面（图片放 assets/install/step2.png）</div>
         <div class="tip">💡 若 MinerU 或 Obsidian 装不上，脚本会自动换多个源/渠道，或提示你浏览器手动下载，不会一直卡住。</div>
       </div>
     </div>
