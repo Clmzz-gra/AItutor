@@ -5,16 +5,16 @@
 >
 > **单一来源**：安装命令以本目录脚本为准；免费模型配置以 `guide/免费模型配置.md` 为准；环境自检以 `tools/doctor.py` 为准。
 
-## 快速开始
+## 快速开始（学生版：只会解压和打开文件）
 
-### Windows（PowerShell 5.1+，系统自带）
-```powershell
-# 1. 只体检，不安装（可选）
-powershell -ExecutionPolicy Bypass -File tools\setup\bootstrap.ps1 -CheckOnly
+### Windows
+1. 下载本项目为 **ZIP** 并**解压**。
+2. 进入解压后的 `tools\setup\` 文件夹，**双击 `一键安装.bat`**。
+3. 什么都不用输入，等它自动装完（脚本会自动装 Git / Python / Obsidian / Obsidian CLI）。
+4. 装完后按窗口提示操作即可。
 
-# 2. 一键安装缺失项（默认国内加速，不翻墙）
-powershell -ExecutionPolicy Bypass -File tools\setup\bootstrap.ps1
-```
+> 说明：脚本还会自动检测默认推荐的 **ZCode**；Claude Code / Codex 需要时才手动安装（默认不装）。
+> 进阶：管理员/助教也可在命令行运行 `tools\setup\install.bat -CheckOnly`（只体检）或 `-Global`（国际源）。
 
 ### macOS / Linux / Git Bash
 ```bash
@@ -51,6 +51,9 @@ python tools/doctor.py --repo-only  # 只看图谱/仓库健康
 ## 参数说明
 | 脚本 | 参数 | 作用 |
 |------|------|------|
+| `一键安装.bat` | （无） | 学生入口：双击即可自动安装（推荐） |
+| `install.bat` | `-CheckOnly` | 只体检，不安装（Windows 命令行） |
+| `install.bat` | `-Global` | 切国际官方源（Windows） |
 | `bootstrap.ps1` | `-CheckOnly` | 只体检，不安装 |
 | `bootstrap.ps1` | `-Global` | 切国际官方源（默认国内加速） |
 | `bootstrap.sh` | `--check` | 只体检，不安装 |
