@@ -50,6 +50,13 @@ esac
 winget_install() { # $1 = 包 id
   winget install --id "$1" -e --silent --accept-source-agreements --accept-package-agreements
 }
+winget_install_timeout() { # $1 = 包 id; 超时则停止，避免一直卡住
+  if command -v timeout >/dev/null 2>&1; then
+    timeout 300 winget install --id "$1" -e --silent --accept-source-agreements --accept-package-agreements
+  else
+    winget install --id "$1" -e --silent --accept-source-agreements --accept-package-agreements
+  fi
+}
 
 # ---- 1. Git ----
 step "检查 Git（话题生命周期 / 防丢失依赖）"
@@ -95,7 +102,14 @@ if have mineru-open-api || have mineru; then
   ok "MinerU CLI 已安装"
 elif [ "$CHECK_ONLY" = 0 ] && [ -n "$PY_CMD" ]; then
   tip "正在安装 MinerU CLI（pip install mineru-open-api）..."
-  "$PY_CMD" -m pip install --quiet mineru-open-api && ok "MinerU CLI 安装完成" || miss "安装失败，可手动：pip install mineru-open-api"
+  PIP_ARGS=()
+  [ "$CHINA" = 1 ] && PIP_ARGS=(-i https://pypi.tuna.tsinghua.edu.cn/simple)
+  min_ok=0
+  for attempt in 1 2; do
+    "$PY_CMD" -m pip install --quiet --default-timeout=60 "${PIP_ARGS[@]}" mineru-open-api && { min_ok=1; break; }
+    [ "$attempt" = 1 ] && tip "第 1 次安装失败，重试中（国内用清华源）..."
+  done
+  if [ "$min_ok" = 1 ]; then ok "MinerU CLI 安装完成"; else miss "安装失败；可手动：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple mineru-open-api"; fi
 elif [ -n "$PY_CMD" ]; then
   miss "MinerU CLI 未安装"; tip "安装命令：pip install mineru-open-api（详见 https://mineru.net/ecosystem?tab=cli）"
 else
@@ -116,7 +130,7 @@ else
   if [ "$CHECK_ONLY" = 0 ]; then
     case "$PKG" in
       brew)   brew install --cask obsidian && ok "安装完成" ;;
-      winget) winget_install "Obsidian.Obsidian" && ok "安装完成" ;;
+      winget) if winget_install_timeout "Obsidian.Obsidian"; then ok "安装完成"; else miss "winget 安装失败/超时"; tip "建议用浏览器打开 https://obsidian.md/download 手动下载（支持断点续传）"; fi ;;
       *)      tip "手动下载：https://obsidian.md/download（Linux 提供 .deb/AppImage）" ;;
     esac
   else
