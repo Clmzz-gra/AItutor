@@ -136,8 +136,8 @@ else
   miss "Obsidian 未安装，装好后按上述步骤开启 CLI"
 fi
 
-# ---- 5. AI harness（不做检测，直接给官网） ----
-step "AI harness（不做检测，已装哪个你自己最清楚）"
+# ---- 5. AI harness（不做检测，按需自行安装） ----
+step "AI harness（不做检测，按需自行安装）"
 tip "ZCode（默认推荐）：https://zcode.z.ai/"
 tip "Claude Code：https://docs.anthropic.com/en/docs/claude-code/"
 tip "Codex CLI：https://github.com/openai/codex"
