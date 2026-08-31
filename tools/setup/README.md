@@ -9,12 +9,13 @@
 
 ### Windows
 1. 下载本项目为 **ZIP** 并**解压**。
-2. 进入解压后的 `tools\setup\` 文件夹，**双击 `一键安装.bat`**。
+2. **双击解压后项目根目录的 `一键安装.bat`**（就在根目录，很好找）。
 3. 什么都不用输入，等它自动装完（脚本会自动装 Git / Python / Obsidian / Obsidian CLI）。
 4. 装完后按窗口提示操作即可。
 
 > 说明：脚本还会自动检测默认推荐的 **ZCode**；Claude Code / Codex 需要时才手动安装（默认不装）。
 > 进阶：管理员/助教也可在命令行运行 `tools\setup\install.bat -CheckOnly`（只体检）或 `-Global`（国际源）。
+> `tools\setup\一键安装.bat` 是同一个入口的备份位置。
 
 ### macOS / Linux / Git Bash
 ```bash

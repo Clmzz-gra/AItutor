@@ -1,27 +1,26 @@
 @echo off
-chcp 65001 >nul
 setlocal
 cd /d "%~dp0..\.."
 
 echo ============================================
-echo   AItutor 一键环境安装（Windows）
+echo   AItutor һ��������װ��Windows��
 echo ============================================
 echo.
-echo 用法:
-echo   install.bat             一键安装缺失项（国内加速，不翻墙）
-echo   install.bat -CheckOnly  只体检，不安装
-echo   install.bat -Global     走国际官方源
+echo �÷�:
+echo   install.bat             һ����װȱʧ����ڼ��٣�����ǽ��
+echo   install.bat -CheckOnly  ֻ��죬����װ
+echo   install.bat -Global     �߹��ʹٷ�Դ
 echo.
-echo 默认推荐 ZCode；Claude Code / Codex 按需手动安装。
+echo Ĭ���Ƽ� ZCode��Claude Code / Codex �����ֶ���װ��
 echo.
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0bootstrap.ps1" %*
 set EXIT_CODE=%ERRORLEVEL%
 
 echo.
 echo ============================================
-echo   一键安装脚本已结束（退出码：%EXIT_CODE%）
-echo   下一步：python tools\doctor.py 自检
-echo   doctor 通过后，对 AI 说：开始学习〈学科名〉
+echo   һ����װ�ű��ѽ������˳��룺%EXIT_CODE%��
+echo   ��һ����python tools\doctor.py �Լ�
+echo   doctor ͨ���󣬶� AI ˵����ʼѧϰ��ѧ������
 echo ============================================
 pause
 exit /b %EXIT_CODE%

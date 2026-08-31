@@ -89,7 +89,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 1. 获取本项目：下载 ZIP 并**解压**，或 `git clone`，打开项目根目录。
    > 国内学生：GitHub 有时需要梯子/不稳定，可改用 **Gitee（gitee.com）** 或 **GitCode（gitcode.com）** 同步/托管本项目，国内直连即可。
-2. **Windows 学生只需双击 `tools/setup/一键安装.bat`**，不用记任何命令；脚本会自动装 Git / Python / Obsidian / Obsidian CLI（Claude Code / Codex 改为按需安装，默认不自动装）。macOS/Linux 用户跑 `tools/setup/bootstrap.sh`。
+2. **Windows 学生只需双击项目根目录的 `一键安装.bat`**，不用记任何命令；脚本会自动装 Git / Python / Obsidian / Obsidian CLI（Claude Code / Codex 改为按需安装，默认不自动装）。macOS/Linux 用户跑 `tools/setup/bootstrap.sh`。
    - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（Settings → About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
 3. 安装 AI harness：**默认推荐 ZCode**（最简单易用，原生读 `AGENTS.md`，项目即在其上验证）；也可选 Claude Code / Codex / Trae / dsh。装好后重开终端。
 4. 配置**默认免费模型 GLM-4.5-Flash**（免费档中能力最强、完全免费，只需申请一次 Key，填 Base URL + Key + 模型名即可），见 `guide/免费模型配置.md` 与 `tools/setup/glm4flash.env.example`。

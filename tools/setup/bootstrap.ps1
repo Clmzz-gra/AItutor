@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
   AItutor 一键环境安装（Windows，无需任何前置，系统自带 PowerShell 即可运行）
