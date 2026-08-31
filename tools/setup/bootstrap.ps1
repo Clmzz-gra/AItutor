@@ -36,6 +36,31 @@ function Have($cmd)       { return [bool](Get-Command $cmd -ErrorAction Silently
 function Open-Url($url) {
     try { Start-Process $url } catch { Write-Tip "请手动打开：$url" }
 }
+function Test-ZCode {
+    # ZCode 可能不在 PATH 里（桌面版），多找几个常见安装位置
+    if (Have "zcode") { return $true }
+    if (Have "ZCode") { return $true }
+    if ($env:ZCODE_BIN -and (Test-Path $env:ZCODE_BIN)) { return $true }
+    if ($env:ZCODE_HOME -and (Test-Path (Join-Path $env:ZCODE_HOME "zcode.exe"))) { return $true }
+    $candidates = @(
+        "$env:LOCALAPPDATA\Programs\ZCode\zcode.exe",
+        "$env:LOCALAPPDATA\Programs\ZhipuAI\ZCode\zcode.exe",
+        "$env:LOCALAPPDATA\ZCode\zcode.exe",
+        "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Zhipu-AI.ZCode_*\zcode.exe",
+        "$env:LOCALAPPDATA\Microsoft\WinGet\Links\zcode.exe",
+        "${env:ProgramFiles}\ZCode\zcode.exe",
+        "${env:ProgramFiles}\ZhipuAI\ZCode\zcode.exe",
+        "${env:ProgramFiles(x86)}\ZCode\zcode.exe"
+    )
+    foreach ($p in $candidates) {
+        if ($p -and (Test-Path $p)) { return $true }
+    }
+    return $false
+}
+function Test-Harness($cmd) {
+    if ($cmd -eq "zcode") { return Test-ZCode }
+    return Have $cmd
+}
 
 function Download-File($url, $out) {
     try {
@@ -175,7 +200,7 @@ $harnesses = @(
 )
 $found = 0
 foreach ($h in $harnesses) {
-    if (Have $h.Cmd) { Write-Ok "$($h.Name) 已检测到（$($h.Cmd)）"; $found++ }
+    if (Test-Harness $h.Cmd) { Write-Ok "$($h.Name) 已检测到（$($h.Cmd)）"; $found++ }
     else { Write-Miss "$($h.Name) 未检测到 —— $($h.Tip)" }
 }
 
@@ -192,7 +217,7 @@ if (-not $CheckOnly) {
 }
 if ($found -eq 0) { Write-Tip "默认推荐装 ZCode（最简，原生读 AGENTS.md）；以上任装其一即可，装好后重开终端再跑一次本脚本确认" }
 else { Write-Ok "已有 $found 个 harness 可用" }
-if (-not (Have "zcode")) {
+if (-not (Test-ZCode)) {
     Write-Tip "尚未检测到 ZCode；默认推荐用官方渠道安装 ZCode（最简易用）"
     if (-not $CheckOnly) {
         Write-Tip "正在打开 ZCode 官网：https://zcode.z.ai/"

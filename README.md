@@ -88,9 +88,10 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 **准备环境（学生只需少量设置）**
 
 1. 下载本项目 **ZIP** 并**解压**（国内学生可用 Gitee/GitCode，避免 GitHub 梯子问题）。
-2. Windows：**双击根目录的 `一键安装.bat`**，什么都不用输入，脚本会自动装好 Git / Python / Obsidian / Obsidian CLI；若还没装 ZCode，脚本会**自动打开官网** https://zcode.z.ai/。macOS/Linux：运行 `bash tools/setup/bootstrap.sh`。
-   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（Settings → About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
-3. 安装 **ZCode**（默认推荐、最简，原生读 `AGENTS.md`；也可选 Claude Code / Codex / Trae / dsh）。装好后重开终端。
+2. Windows：**双击根目录的 `一键安装.bat`**，什么都不用输入，脚本会自动装好 Git / Python / Obsidian / Obsidian CLI；若还没装 ZCode，脚本会**自动打开官网** https://zcode.z.ai/
+   macOS/Linux：运行 `bash tools/setup/bootstrap.sh`。
+   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（中文界面下 设置 → 关于 → 命令行界面 → 注册 → 重启终端 → `obsidian help` 验证）。
+3. 安装 **ZCode**（默认推荐、最简配置；也可选 Claude Code / Codex / Trae / dsh）。装好后重开终端。
 4. 配置**默认免费模型 GLM-4.5-Flash**（免费档中能力最强、完全免费，只需申请一次 Key，填 Base URL + Key + 模型名即可），见 `guide/免费模型配置.md` 与 `tools/setup/glm4flash.env.example`。
 5. 运行 `python tools/doctor.py` 自检（会告诉你缺什么、怎么修），通过后即可开始学习。
 
