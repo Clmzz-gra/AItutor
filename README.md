@@ -22,7 +22,7 @@ AItutor将知识图谱设计为**动态的可拓展对象**。你只需要通过
 
 该项目同时服务于自学的**学生**，希望使用该项目提高教学效果的**教师**，以及想要对该项目二次开发的创作者。
 
-> 版本：0.2.3
+> 版本：0.2.4
 **该项目当前处于测试阶段，在获取试点反馈后将进行蜕变式更新。**
 
 架构与设计说明见 [ARCHITECTURE.md](./ARCHITECTURE.md)
@@ -87,7 +87,8 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 **准备环境（学生只需少量设置）**
 
-1. 克隆本项目到自己的电脑。
+1. 获取本项目：直接 `git clone` 或下载 ZIP，打开项目根目录。
+   > 国内学生：GitHub 有时需要梯子/不稳定，可改用 **Gitee（gitee.com）** 或 **GitCode（gitcode.com）** 同步/托管本项目，国内直连即可。
 2. 一键安装缺失环境（推荐）：Windows 跑 `tools/setup/bootstrap.ps1`，macOS/Linux 跑 `tools/setup/bootstrap.sh`；脚本会装 Git / Python / Obsidian / Obsidian CLI（Claude Code / Codex 改为按需安装，默认不自动装）。
    - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（Settings → About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
 3. 安装 AI harness：**默认推荐 ZCode**（最简单易用，原生读 `AGENTS.md`，项目即在其上验证）；也可选 Claude Code / Codex / Trae / dsh。装好后重开终端。
