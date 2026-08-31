@@ -47,6 +47,7 @@ description: >
 ## 讲解前置（强制 checkpoint，先于一切讲解）
 
 > **任何实质学习话题（讲解/讨论/出题/作业），开始前必须先建 checkpoint 快照 + commit**（防中途丢失，可回 git 检索）。这是硬性前置，不是可选项。
+> **回复前强制（checkpoint 决策）**：每次回复前，先按 `rules/core/decision-trees.md` §1 完成「是否建 checkpoint」决策，并**执行**该决策——该建就建 `_checkpoints/{文章名}.md` + `git commit "[TOPIC <文章名>][OPEN]"`，不该建才直接回复。**决策未完成或未执行，不得开始讲解、不得给出实质回复。**
 > 纯闲聊 / 操作指令 / 一句话澄清不建 checkpoint；判定见 `rules/core/decision-trees.md` §1。
 
 ```
