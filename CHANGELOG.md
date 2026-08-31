@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.4 — 2026-08-31
+
+### 易用化升级（学生端少设置 + 默认免费 token）
+- 新增一键环境安装：`tools/setup/bootstrap.ps1` / `bootstrap.sh` + `tools/setup/README.md`，一条命令装好 Git / Python / Obsidian / Obsidian CLI / 可选 harness
+- 新增环境/仓库体检脚本 `tools/doctor.py`：坏链、孤立节点、frontmatter、未闭合 TOPIC、临时残留、默认免费模型提示，并输出“下一步怎么做”
+- 学生端**默认免费模型定为 GLM-4.5-Flash**（免费档中能力最强、完全免费）：README 快速开始、`guide/学生使用指南.md`、`guide/免费模型配置.md` 统一口径，只需申请一次 Key
+- 校准智谱免费模型配置：对照 [GLM-4.5-Flash 官方文档](https://docs.bigmodel.cn/cn/guide/models/free/glm-4.5-flash) 将默认模型名设为 `glm-4.5-flash`，上下文窗口 `128000` / 最大输出 `96000` 写入 ZCode 填表速查；保留旧免费档 `glm-4-flash-250414` / `glm-4-flash` 作为兼容备选，Base URL 维持 OpenAI 兼容 `https://open.bigmodel.cn/api/paas/v4/`
+- **默认 harness 定为 ZCode**（最简，原生读 `AGENTS.md`）：README、学生指南、setup 文档与 bootstrap 脚本同步推荐；Claude Code / Codex 改为**按需安装**（脚本只给出 npm 命令，不再自动装）
+- README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置
+
 ## 0.2.3 — 2026-08-29
 
 ### 新能力

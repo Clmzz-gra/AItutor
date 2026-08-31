@@ -1,0 +1,63 @@
+# AItutor 一键环境安装（tools/setup）
+
+> 目标：让学生**少操作设置**，跑一条命令装好 Git / Python / Obsidian / Obsidian CLI / 可选 AI harness，
+> 再按默认免费模型配置好 token 即可开始学习。
+>
+> **单一来源**：安装命令以本目录脚本为准；免费模型配置以 `guide/免费模型配置.md` 为准；环境自检以 `tools/doctor.py` 为准。
+
+## 快速开始
+
+### Windows（PowerShell 5.1+，系统自带）
+```powershell
+# 1. 只体检，不安装（可选）
+powershell -ExecutionPolicy Bypass -File tools\setup\bootstrap.ps1 -CheckOnly
+
+# 2. 一键安装缺失项（默认国内加速，不翻墙）
+powershell -ExecutionPolicy Bypass -File tools\setup\bootstrap.ps1
+```
+
+### macOS / Linux / Git Bash
+```bash
+# 1. 只体检，不安装（可选）
+bash tools/setup/bootstrap.sh --check
+
+# 2. 一键安装缺失项（默认国内加速）
+bash tools/setup/bootstrap.sh
+```
+
+> 需要走国际官方源时：PowerShell 加 `-Global`，bash 加 `--global`。
+
+## 脚本会自动检查 / 安装什么
+1. **Git** —— 话题生命周期 / 防丢失
+2. **Python 3** —— `tools/doctor.py`、学习画像、演示工具
+3. **Obsidian** —— 笔记与知识图谱（桌面端）
+4. **Obsidian CLI** —— AI 管理 vault 的通道（需在 Obsidian 界面开启一次：Settings → About → Command line interface）
+5. **AI harness（默认推荐 ZCode）** —— 脚本会检测 ZCode（最简，原生读 `AGENTS.md`）；Claude Code / Codex 改为**按需安装**（需用时手动 npm）；dsh / Trae 按各自渠道装
+
+## 安装后（学生只需 3 步；默认推荐 ZCode）
+0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
+1. **打开本仓库为 Obsidian vault**：Obsidian → Open folder as vault → 选项目根目录
+2. **确认 CLI**：`obsidian help` 能正常输出
+3. **配默认免费模型**：申请一个智谱 GLM-4.5-Flash Key（免费档中能力最强、永久免费），把 Base URL / Key / 模型名填进你的 harness，详见 `guide/免费模型配置.md`
+
+### 自检
+```bash
+python tools/doctor.py          # 完整体检（环境 + 图谱 + 未闭合 TOPIC + 临时残留）
+python tools/doctor.py --env-only   # 只看本机环境
+python tools/doctor.py --repo-only  # 只看图谱/仓库健康
+```
+> doctor 会告诉你“缺什么、怎么修、下一步做什么”，学生不用记一堆命令。
+
+## 参数说明
+| 脚本 | 参数 | 作用 |
+|------|------|------|
+| `bootstrap.ps1` | `-CheckOnly` | 只体检，不安装 |
+| `bootstrap.ps1` | `-Global` | 切国际官方源（默认国内加速） |
+| `bootstrap.sh` | `--check` | 只体检，不安装 |
+| `bootstrap.sh` | `--global` | 切国际官方源 |
+
+## 与相关文件的关系
+- 免费模型默认配置（GLM-4.5-Flash，免费档中能力最强）：`guide/免费模型配置.md`
+- 免费模型环境变量模板：`tools/setup/glm4flash.env.example`
+- 环境/仓库自检：`tools/doctor.py`
+- Obsidian CLI 用法：`tools/obsidian-cli.md`

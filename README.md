@@ -71,6 +71,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 学习画像 | 程序化分析学习类型/兴趣焦点/生长形态 | `tools/learning-profile/analyze.py` |
 | 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae / ZCode（原生读 `AGENTS.md`） | `.dsh/` `.claude/` `.codex/` `.trae/` + 根 `AGENTS.md` |
 | Obsidian CLI 集成 | vault 读写/搜索/坏链体检统一用法 + AI 建笔记标准回路 | `tools/obsidian-cli.md` |
+| 一键环境安装 | 一条命令装好 Git / Python / Obsidian / CLI / 可选 harness，学生少操作设置 | `tools/setup/README.md` |
+| 环境/仓库体检 | `python tools/doctor.py`：坏链、孤立节点、frontmatter、未闭合 TOPIC、临时残留 | `tools/doctor.py` |
+| 默认免费模型 | 学生默认 **GLM-4.5-Flash**（免费档中能力最强，配置极简） | `guide/免费模型配置.md` |
 | 模板框架 | 10 类文章模板 + 周报 | `templates/` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
@@ -82,22 +85,23 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 ### 学生
 
-**准备环境**
+**准备环境（学生只需少量设置）**
 
-1. 安装 **Obsidian**（1.12.7+），将项目根目录作为 vault 打开——图谱、文章和笔记都会在这里可视化；启用 **Obsidian CLI**（官方原文）：
-   > Enable **Obsidian CLI** under **Settings → About → Command line interface**, follow the registration prompt, restart your terminal, then verify with `obsidian help`.
-   按提示注册后重启终端，验证 `obsidian help` 可正常输出。
-2. 安装任一支持的 harness（DeepSeek / Claude Code / Codex / Trae / ZCode）。
-3. 克隆本项目到自己的电脑。
+1. 克隆本项目到自己的电脑。
+2. 一键安装缺失环境（推荐）：Windows 跑 `tools/setup/bootstrap.ps1`，macOS/Linux 跑 `tools/setup/bootstrap.sh`；脚本会装 Git / Python / Obsidian / Obsidian CLI（Claude Code / Codex 改为按需安装，默认不自动装）。
+   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（Settings → About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
+3. 安装 AI harness：**默认推荐 ZCode**（最简单易用，原生读 `AGENTS.md`，项目即在其上验证）；也可选 Claude Code / Codex / Trae / dsh。装好后重开终端。
+4. 配置**默认免费模型 GLM-4.5-Flash**（免费档中能力最强、完全免费，只需申请一次 Key，填 Base URL + Key + 模型名即可），见 `guide/免费模型配置.md` 与 `tools/setup/glm4flash.env.example`。
+5. 运行 `python tools/doctor.py` 自检（可选，会告诉你缺什么、怎么修）。
 
 **放入教材**
 
-4. 在 `assets/{学科}/seed/textbook/` 放入教材（Markdown/OCR 文本，勿放 PDF，遵守版权）。
-5. 若已有现成 seed 图谱（学科概览/章文章），一并放入 `assets/{学科}/seed/`；否则让 AI 基于教材初始化。
+6. 在 `assets/{学科}/seed/textbook/` 放入教材（Markdown/OCR 文本，勿放 PDF，遵守版权）。
+7. 若已有现成 seed 图谱（学科概览/章文章），一并放入 `assets/{学科}/seed/`；否则让 AI 基于教材初始化。
 
 **开始学习**
 
-6. 正常对话提问即可，例如"开始学习概率论"。AI 会自动：
+8. 正常对话提问即可，例如"开始学习概率论"。AI 会自动：
    - 建 checkpoint 快照（防丢失）
    - 把讲解/讨论/习题写成文章（节点）
    - 按 初始化→创建文章→维护文章 驱动学习
@@ -105,9 +109,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 **查看图谱与画像**
 
-7. 用 Obsidian 看知识图谱（节点大小 = 链接度），节点即文章。
-8. 用 Obsidian 看知识图谱与目录结构，掌握当前学习形状。
-9. 跑 `python tools/learning-profile/analyze.py --personal assets/{学科}/personal/notes --seed assets/{学科}/seed` 看学习画像。
+9. 用 Obsidian 看知识图谱（节点大小 = 链接度），节点即文章。
+10. 用 Obsidian 看知识图谱与目录结构，掌握当前学习形状。
+11. 跑 `python tools/learning-profile/analyze.py --personal assets/{学科}/personal/notes --seed assets/{学科}/seed` 看学习画像。
 
 ### 教授
 
@@ -167,7 +171,7 @@ AItutor/
 │   └── subjects/                #   学科规则（每学科一个子目录）
 ├── templates/                   # 通用模板框架
 ├── guide/                       # 学生/助教引导
-├── tools/                       # 工具脚本（学习画像、图谱配色、Obsidian CLI 指南）
+├── tools/                       # 工具脚本（doctor 体检、一键 setup、学习画像、图谱配色、Obsidian CLI 指南）
 ├── assets/                      # 学科资产层（seed 只读地基 + personal 学生增量；仅占位结构，实际内容本地）
 │   └── {学科}/                  #   每学科一个子目录（seed/textbook + personal/notes...）
 └── .claude/ .codex/ .trae/      # 各 harness 指针注入入口（ZCode 原生读 AGENTS.md，免目录）
