@@ -221,18 +221,18 @@ def check_graph_style():
     graph = ROOT / ".obsidian" / "graph.json"
     if not graph.exists():
         return ("图谱配色", False, "未找到 .obsidian/graph.json",
-                "运行 python tools/graph-style/configure.py 生成配色分组")
+                "运行 python tools/graph-style/configure.py 生成配色分组，再重启 Obsidian 生效")
     try:
         data = json.loads(graph.read_text(encoding="utf-8"))
     except Exception as e:  # noqa: BLE001
         return ("图谱配色", False, f"graph.json 解析失败: {e}",
-                "运行 python tools/graph-style/configure.py 重建")
+                "运行 python tools/graph-style/configure.py 重建，再重启 Obsidian 生效")
     groups = data.get("colorGroups") or []
     if not groups:
         return ("图谱配色", False, "colorGroups 为空（可能被 obsidian reload 清空）",
-                "运行 python tools/graph-style/configure.py 一键恢复配色分组")
+                "运行 python tools/graph-style/configure.py 一键恢复配色分组，再重启 Obsidian（obsidian restart）使其生效")
     return ("图谱配色", True, f"colorGroups {len(groups)} 组完好",
-            "若需调整配色，运行 python tools/graph-style/configure.py")
+            "若需调整配色，运行 python tools/graph-style/configure.py 后重启 Obsidian 生效")
 
 
 def check_environment():
