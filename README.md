@@ -22,7 +22,7 @@ AItutor将知识图谱设计为**动态的可拓展对象**。你只需要通过
 
 该项目同时服务于自学的**学生**，希望使用该项目提高教学效果的**教师**，以及想要对该项目二次开发的创作者。
 
-> 版本：0.2.3
+> 版本：0.2.4
 **该项目当前处于测试阶段，在获取试点反馈后将进行蜕变式更新。**
 
 架构与设计说明见 [ARCHITECTURE.md](./ARCHITECTURE.md)
@@ -72,6 +72,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 多 harness 适配 | 同一套规则跑在 dsh / Claude Code / Codex / Trae / ZCode（原生读 `AGENTS.md`） | `.dsh/` `.claude/` `.codex/` `.trae/` + 根 `AGENTS.md` |
 | Obsidian CLI 集成 | vault 读写/搜索/坏链体检统一用法 + AI 建笔记标准回路 | `tools/obsidian-cli.md` |
 | 模板框架 | 内置 10 类 + 扩展文章模板 + 周报 | `templates/` |
+| 一键环境安装 | 一条命令装好 Git / Python / Obsidian / CLI / 可选 harness，学生少操作设置 | `tools/setup/README.md` |
+| 环境/仓库体检 | `python tools/doctor.py`：坏链、孤立节点、frontmatter、未闭合 TOPIC、临时残留 | `tools/doctor.py` |
+| 默认免费模型 | 学生默认 **GLM-4.5-Flash**（免费档中能力最强，配置极简） | `guide/免费模型配置.md` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
 > 当前学科包：雅思（IELTS），规则见 `rules/subjects/雅思/`，资产结构见 `assets/雅思/`。
@@ -82,22 +85,27 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 ### 学生
 
-**准备环境**
+> 📖 **网页版图文教程**：打开根目录 `install.html`（浏览器直接打开即可，后续可往里面放截图）。
 
-1. 安装 **Obsidian**（1.12.7+），将项目根目录作为 vault 打开——图谱、文章和笔记都会在这里可视化；启用 **Obsidian CLI**（官方原文）：
-   > Enable **Obsidian CLI** under **Settings → About → Command line interface**, follow the registration prompt, restart your terminal, then verify with `obsidian help`.
-   按提示注册后重启终端，验证 `obsidian help` 可正常输出。
-2. 安装任一支持的 harness（DeepSeek / Claude Code / Codex / Trae / ZCode）。
-3. 克隆本项目到自己的电脑。
+**准备环境（学生只需少量设置）**
+
+1. 下载本项目 **ZIP** 并**解压**（国内学生可用 [Gitee](https://gitee.com/clmzz/AItutor) / [GitCode](https://gitcode.com/clmzz/AItutor)，避免 GitHub 梯子问题）。
+2. Windows：**双击根目录的 `一键安装.bat`**，什么都不用输入，脚本会自动装好 Git / Python / Obsidian / Obsidian CLI / **MinerU CLI**，装完还会**自动运行体检**；若还没装 ZCode，脚本会给出官网链接 https://zcode.z.ai/。
+   macOS/Linux：运行 `bash tools/setup/bootstrap.sh`。
+   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（中文界面下 设置 → 关于 → 命令行界面；英文 Settings → General/About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
+3. 安装 **ZCode**（默认推荐、最简配置，官网 https://zcode.z.ai/）；也可自行选 Claude Code / Codex / Trae / dsh（脚本不做检测，只列出各官方网址，装好后重开终端即可）。
+4. 提供**默认免费模型 GLM-4.5-Flash**的配置（免费档中能力最强、完全免费，只需申请一次 Key，填 Base URL + Key + 模型名即可），见 `guide/免费模型配置.md` 与 `tools/setup/glm4flash.env.example`。
+   体验和能力与模型质量相关，建议使用高质量的大模型。
+5. 体检：一键安装结束会自动运行；也可随时**双击根目录的 `体检.bat`**（或运行 `python tools/doctor.py`），通过后即可开始学习。
 
 **放入教材**
 
-4. 在 `assets/{学科}/seed/textbook/` 放入教材（Markdown/OCR 文本，勿放 PDF，遵守版权）。
-5. 若已有现成 seed 图谱（学科概览/章文章），一并放入 `assets/{学科}/seed/`；否则让 AI 基于教材初始化。
+1. 在 `assets/{学科}/seed/textbook/` 放入教材（使用请遵守版权）。
+2. 若已有现成 seed 图谱（学科概览/章文章），一并放入 `assets/{学科}/seed/`；否则让 AI 基于教材初始化。
 
 **开始学习**
 
-6. 正常对话提问即可，例如"开始学习雅思"。AI 会自动：
+8. 正常对话提问即可，例如"开始学习雅思"。AI 会自动：
    - 建 checkpoint 快照（防丢失）
    - 把讲解/讨论/习题写成文章（节点）
    - 按 初始化→创建文章→维护文章 驱动学习
@@ -105,9 +113,9 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 
 **查看图谱与画像**
 
-7. 用 Obsidian 看知识图谱（节点大小 = 链接度），节点即文章。
-8. 用 Obsidian 看知识图谱与目录结构，掌握当前学习形状。
-9. 跑 `python tools/learning-profile/analyze.py --personal assets/{学科}/personal/notes --seed assets/{学科}/seed` 看学习画像。
+9. 用 Obsidian 看知识图谱（节点大小 = 链接度），节点即文章。
+10. 用 Obsidian 看知识图谱与目录结构，掌握当前学习形状。
+11. 跑 `python tools/learning-profile/analyze.py --personal assets/{学科}/personal/notes --seed assets/{学科}/seed` 看学习画像。
 
 ### 教授
 
@@ -167,7 +175,7 @@ AItutor/
 │   └── subjects/                #   学科规则（每学科一个子目录）
 ├── templates/                   # 通用模板框架
 ├── guide/                       # 学生/助教引导
-├── tools/                       # 工具脚本（学习画像、图谱配色、Obsidian CLI 指南）
+├── tools/                       # 工具脚本（doctor 体检、一键 setup、学习画像、图谱配色、Obsidian CLI 指南）
 ├── assets/                      # 学科资产层（seed 只读地基 + personal 学生增量；仅占位结构，实际内容本地）
 │   └── {学科}/                  #   每学科一个子目录（seed/textbook + personal/notes...）
 └── .claude/ .codex/ .trae/      # 各 harness 指针注入入口（ZCode 原生读 AGENTS.md，免目录）

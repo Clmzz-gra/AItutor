@@ -12,6 +12,14 @@
   4. 批判性使用守则（AI 幻觉、验证方法、学术诚信）
 - **状态**：待写
 
+## 导航
+
+- 学生使用指南：`guide/学生使用指南.md`
+- 免费模型默认配置（GLM-4.5-Flash，免费档中能力最强）：`guide/免费模型配置.md`
+- 一键环境安装：`tools/setup/README.md`
+- 环境/仓库自检：`tools/doctor.py`
+- 助教手册：`guide/助教手册.md`
+
 ## 素材来源
 
 - 学习模式：`../.dsh/skills/ai-study-method/`

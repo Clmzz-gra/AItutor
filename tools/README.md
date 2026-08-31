@@ -14,8 +14,14 @@
 | `speaking-practice-timer` | 雅思 | 口语限时练习 / Part 2 计时 | 待建 |
 | `listening-dictation-tool` | 雅思 | 听力精听 / 听写工具 | 待建 |
 
-| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path + file 检索式，seed/personal × 层级/类型） | `tools/graph-style/configure.py` |
+## 工具脚本索引
+
+| 脚本/指南 | 用途 | 入口/用法 |
+|-----------|------|-----------|
+| `graph-style/configure.py` | Obsidian 图谱配色分组自动配置（path + file 检索式，seed/personal × 层级/类型） | `python tools/graph-style/configure.py` |
 | `obsidian-cli.md` | Obsidian CLI 使用指南（vault 读写/搜索/坏链体检、AI 建笔记标准回路、Python 调用模板；实测 1.13.7） | `tools/obsidian-cli.md` |
+| `doctor.py` | 环境 + 图谱/仓库体检（坏链、孤立节点、frontmatter、未闭合 TOPIC、临时残留；默认免费模型提示） | `python tools/doctor.py` |
+| `setup/` | 一键环境安装（Windows / macOS / Linux），少操作设置 | `tools/setup/README.md` |
 
 ## 技术栈
 

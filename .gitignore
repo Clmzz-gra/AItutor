@@ -29,6 +29,12 @@ Thumbs.db
 # Logs
 *.log
 
+# 本地密钥 / 模型配置（不要提交真实 Key）
+.env
+*.env
+!*.env.example
+tools/setup/*.env
+
 # Personal notes (不要提交学生个人学习笔记)
 **/math/*/第*章*.md
 **/math/*/theorems.md
