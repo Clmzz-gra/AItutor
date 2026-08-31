@@ -92,7 +92,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 1. 下载本项目 **ZIP** 并**解压**（国内学生可用 [Gitee](https://gitee.com/clmzz/AItutor) / [GitCode](https://gitcode.com/clmzz/AItutor)，避免 GitHub 梯子问题）。
 2. Windows：**双击根目录的 `一键安装.bat`**，什么都不用输入，脚本会自动装好 Git / Python / Obsidian / Obsidian CLI / **MinerU CLI**，装完还会**自动运行体检**；若还没装 ZCode，脚本会给出官网链接 https://zcode.z.ai/。
    macOS/Linux：运行 `bash tools/setup/bootstrap.sh`。
-   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（中文界面下 设置 → 关于 → 命令行界面 → 注册 → 重启终端 → `obsidian help` 验证）。
+   - 也可手动装 **Obsidian**（1.12.7+）并把项目根目录作为 vault 打开；启用 **Obsidian CLI**（中文界面下 设置 → 关于 → 命令行界面；英文 Settings → General/About → Command line interface → 注册 → 重启终端 → `obsidian help` 验证）。
 3. 安装 **ZCode**（默认推荐、最简配置，官网 https://zcode.z.ai/）；也可自行选 Claude Code / Codex / Trae / dsh（脚本不做检测，只列出各官方网址，装好后重开终端即可）。
 4. 提供**默认免费模型 GLM-4.5-Flash**的配置（免费档中能力最强、完全免费，只需申请一次 Key，填 Base URL + Key + 模型名即可），见 `guide/免费模型配置.md` 与 `tools/setup/glm4flash.env.example`。
    体验和能力与模型质量相关，建议使用高质量的大模型。

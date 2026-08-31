@@ -8,7 +8,7 @@
 ## 1. 前置条件
 
 1. 安装 **Obsidian 桌面端 1.12.7+**（installer 版本）；
-2. 开启 CLI：**Settings → About → Command line interface**，按提示注册后**重启终端**；
+2. 开启 CLI：**Settings → General（部分版本为 About）→ Command line interface**，按提示注册后**重启终端**；
 3. 验证：
 
 ```bash
