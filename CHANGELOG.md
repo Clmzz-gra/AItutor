@@ -12,7 +12,9 @@
 - README 快速开始精简为“克隆 → 一键装环境 → 装 harness → 配免费模型 → doctor 自检”，减少学生手动设置；并进一步面向“只会解压和打开文件”的用户（下载 ZIP → 解压 → 双击根目录 `一键安装.bat`）
 - README 补充国内托管提示（GitHub 不稳定时可改用 Gitee / GitCode），并升级版本号 0.2.4
 - ZCode 不做检测，仅提供官网链接 https://zcode.z.ai/（不再误报/不再自动打开）
+- 所有 harness 均不做检测，只列出官方网址（ZCode / Claude Code / Codex / dsh / Trae）
 - 新增根目录 `体检.bat`；一键安装结束后自动运行 doctor 体检
+- 修复 doctor.py 在 Windows 控制台的中文乱码（移除强制 UTF-8 输出）
 
 ## 0.2.3 — 2026-08-29
 

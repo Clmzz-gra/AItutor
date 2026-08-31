@@ -164,24 +164,16 @@ if (Have "obsidian") {
     Write-Miss "Obsidian 未安装，装好后按上述步骤开启 CLI"
 }
 
-# ---- 5. AI harness（默认推荐 ZCode；任装其一；需各自登录账号） ----
-Write-Step "检查 AI harness（默认推荐 ZCode；任选其一即可）"
-$harnesses = @(
-    @{ Name = "Claude Code"; Cmd = "claude"; Tip = "按需安装（npm + npmmirror 源，需用时手动执行）" },
-    @{ Name = "Codex CLI";   Cmd = "codex";  Tip = "按需安装（npm + npmmirror 源，需用时手动执行）" },
-    @{ Name = "dsh";         Cmd = "dsh";    Tip = "DeepSeek harness，按你的获取渠道安装" },
-    @{ Name = "Trae";        Cmd = "trae";   Tip = "官网下载：https://www.trae.ai" }
-)
-$found = 0
-foreach ($h in $harnesses) {
-    if (Have $h.Cmd) { Write-Ok "$($h.Name) 已检测到（$($h.Cmd)）"; $found++ }
-    else { Write-Miss "$($h.Name) 未检测到 —— $($h.Tip)" }
-}
-
-Write-Tip "ZCode（默认推荐 harness）：本脚本不做检测，官网 https://zcode.z.ai/"
+# ---- 5. AI harness（不做检测，直接给官网） ----
+Write-Step "AI harness（不做检测，已装哪个你自己最清楚）"
+Write-Tip "ZCode（默认推荐）：https://zcode.z.ai/"
+Write-Tip "Claude Code：https://docs.anthropic.com/en/docs/claude-code/"
+Write-Tip "Codex CLI：https://github.com/openai/codex"
+Write-Tip "dsh（DeepSeek harness）：按你的获取渠道安装（平台 https://platform.deepseek.com/）"
+Write-Tip "Trae：https://www.trae.ai"
 
 if (-not $CheckOnly) {
-    Write-Tip "Claude Code / Codex CLI 改为按需安装：需用时手动执行（国内自动用 npmmirror 源）："
+    Write-Tip "Claude Code / Codex CLI 如需安装，按需手动执行（国内自动用 npmmirror 源）："
     if ($China -and (Have "npm")) {
         Write-Tip "  Claude Code: npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com"
         Write-Tip "  Codex CLI:   npm install -g @openai/codex --registry=https://registry.npmmirror.com"
@@ -191,8 +183,6 @@ if (-not $CheckOnly) {
     }
     Write-Tip "需要 Node.js/npm 前置；默认推荐 ZCode，一般无需安装 Claude Code / Codex。"
 }
-if ($found -eq 0) { Write-Tip "默认推荐 ZCode（官网 https://zcode.z.ai/）；以上 harness 任装其一即可，装好后重开终端再跑一次本脚本确认" }
-else { Write-Ok "已有 $found 个 harness 可用" }
 
 # ---- 6. 下一步 ----
 Write-Step "下一步"

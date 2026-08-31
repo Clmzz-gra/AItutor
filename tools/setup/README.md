@@ -13,7 +13,7 @@
 3. 什么都不用输入，等它自动装完（脚本会自动装 Git / Python / Obsidian / Obsidian CLI）。
 4. 装完后按窗口提示操作即可。
 
-> 说明：脚本**不做 ZCode 检测**，只提供官网链接 https://zcode.z.ai/；Claude Code / Codex 需要时才手动安装（默认不装）。
+> 说明：脚本**不做任何 harness 检测**，只列出各 harness 官方网址；Claude Code / Codex 按需手动安装（默认不装）。
 > 一键安装结束会自动运行体检（doctor）；也可以随时双击根目录的 `体检.bat`。
 > 进阶：管理员/助教也可在命令行运行 `tools\setup\install.bat -CheckOnly`（只体检）或 `-Global`（国际源）。
 > `tools\setup\一键安装.bat` 是同一个入口的备份位置。
@@ -34,10 +34,10 @@ bash tools/setup/bootstrap.sh
 2. **Python 3** —— `tools/doctor.py`、学习画像、演示工具
 3. **Obsidian** —— 笔记与知识图谱（桌面端）
 4. **Obsidian CLI** —— AI 管理 vault 的通道（需在 Obsidian 界面开启一次：Settings → About → Command line interface）
-5. **AI harness（默认推荐 ZCode）** —— 脚本会检测 ZCode（最简，原生读 `AGENTS.md`）；Claude Code / Codex 改为**按需安装**（需用时手动 npm）；dsh / Trae 按各自渠道装
+5. **AI harness（默认推荐 ZCode，不检测）** —— 脚本只列出各 harness 官方网址（ZCode / Claude Code / Codex / dsh / Trae）；Claude Code / Codex 按需手动安装。
 
 ## 安装后（学生只需 3 步；默认推荐 ZCode）
-0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装（官网 https://zcode.z.ai/，脚本不做检测、只给链接）；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
+0. **装 AI harness（默认 ZCode，最简）**：用 ZCode 官方渠道安装（官网 https://zcode.z.ai/，脚本不做任何检测、只给链接）；Claude Code / Codex 按需手动安装（脚本只给命令，不再自动装）。
 1. **打开本仓库为 Obsidian vault**：Obsidian → Open folder as vault → 选项目根目录
 2. **确认 CLI**：`obsidian help` 能正常输出
 3. **配默认免费模型**：申请一个智谱 GLM-4.5-Flash Key（免费档中能力最强、永久免费），把 Base URL / Key / 模型名填进你的 harness，详见 `guide/免费模型配置.md`

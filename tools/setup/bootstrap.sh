@@ -121,22 +121,16 @@ else
   miss "Obsidian 未安装，装好后按上述步骤开启 CLI"
 fi
 
-# ---- 5. AI harness（默认推荐 ZCode；任装其一；需各自登录账号） ----
-step "检查 AI harness（默认推荐 ZCode；任选其一即可）"
-found=0
-check_harness() { # $1 显示名 $2 命令 $3 提示
-  if have "$2"; then ok "$1 已检测到（$2）"; found=$((found+1))
-  else miss "$1 未检测到 —— $3"; fi
-}
-check_harness "Claude Code" "claude" "按需安装（npm，国内走 npmmirror 源，需用时手动执行）"
-check_harness "Codex CLI"   "codex"  "按需安装（npm，国内走 npmmirror 源，需用时手动执行）"
-check_harness "dsh"         "dsh"    "DeepSeek harness，按你的获取渠道安装"
-check_harness "Trae"        "trae"   "官网下载：https://www.trae.ai"
-
-tip "ZCode（默认推荐 harness）：本脚本不做检测，官网 https://zcode.z.ai/"
+# ---- 5. AI harness（不做检测，直接给官网） ----
+step "AI harness（不做检测，已装哪个你自己最清楚）"
+tip "ZCode（默认推荐）：https://zcode.z.ai/"
+tip "Claude Code：https://docs.anthropic.com/en/docs/claude-code/"
+tip "Codex CLI：https://github.com/openai/codex"
+tip "dsh（DeepSeek harness）：按你的获取渠道安装（平台 https://platform.deepseek.com/）"
+tip "Trae：https://www.trae.ai"
 
 if [ "$CHECK_ONLY" = 0 ]; then
-  tip "Claude Code / Codex CLI 改为按需安装：需用时手动执行（国内自动用 npmmirror 源）："
+  tip "Claude Code / Codex CLI 如需安装，按需手动执行（国内自动用 npmmirror 源）："
   if [ "$CHINA" = 1 ]; then
     tip "  Claude Code: npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com"
     tip "  Codex CLI:   npm install -g @openai/codex --registry=https://registry.npmmirror.com"
@@ -146,8 +140,6 @@ if [ "$CHECK_ONLY" = 0 ]; then
   fi
   tip "需要 Node.js/npm 前置；默认推荐 ZCode，一般无需安装 Claude Code / Codex。"
 fi
-if [ "$found" -eq 0 ]; then tip "默认推荐 ZCode（官网 https://zcode.z.ai/）；以上 harness 任装其一即可，装好后重开终端再跑一次本脚本确认"
-else ok "已有 $found 个 harness 可用"; fi
 
 # ---- 6. 下一步 ----
 step "下一步"
