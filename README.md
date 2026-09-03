@@ -77,7 +77,7 @@ seed 是只读的教材初始化资料，personal 是学生个人增量。避免
 | 默认免费模型 | 学生默认 **GLM-4.5-Flash**（免费档中能力最强，配置极简） | `guide/免费模型配置.md` |
 | 学科规则 | 每学科一个子目录（学习依赖、思考方式、能力地图、课程大纲） | `rules/subjects/` |
 
-> 当前学科包：雅思（IELTS），规则见 `rules/subjects/雅思/`，资产结构见 `assets/雅思/`。
+> 当前学科包：雅思（IELTS）与实变函数与泛函分析，规则见 `rules/subjects/雅思/`、`rules/subjects/实变函数与泛函分析/`，资产结构见 `assets/雅思/`、`assets/实变函数与泛函分析/`。
 
 ---
 

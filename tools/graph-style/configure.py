@@ -25,6 +25,11 @@ PALETTE = [
     ("path:seed file:学科概览", "#B0717A"),  # 学科全景：低饱和玫瑰
     ("path:seed file:Ch",       "#5C7A99"),  # 章：低饱和蓝
     ("path:seed file:Sec",      "#6B8E6B"),  # 节：低饱和绿
+    # seed 讲解包（多文件展开，属于 note）：00/01 为章级枢纽，02 主题为节级，M 方法为概念级
+    ("path:seed file:整体认知", "#5C7A99"),  # 讲解包 00：章级枢纽（低饱和蓝）
+    ("path:seed file:背景与动机", "#5C7A99"),  # 讲解包 01：章级（低饱和蓝）
+    ("path:seed file:主题",      "#6B8E6B"),  # 讲解包 02 主题：节级（低饱和绿）
+    ("path:seed file:方法",      "#78909C"),  # 讲解包 M 方法：概念级（低饱和灰蓝）
     # personal：高饱和，按文章类型区分
     ("path:personal file:学科概览", "#FF1744"),  # 学科全景：高饱和红
     ("path:personal file:Ch",       "#2979FF"),  # 章：高饱和蓝

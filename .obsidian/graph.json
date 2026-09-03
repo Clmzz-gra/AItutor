@@ -29,7 +29,28 @@
       }
     },
     {
-      "query": "path:seed file:概念",
+      "query": "path:seed file:整体认知",
+      "color": {
+        "a": 1,
+        "rgb": 6060697
+      }
+    },
+    {
+      "query": "path:seed file:背景与动机",
+      "color": {
+        "a": 1,
+        "rgb": 6060697
+      }
+    },
+    {
+      "query": "path:seed file:主题",
+      "color": {
+        "a": 1,
+        "rgb": 7048811
+      }
+    },
+    {
+      "query": "path:seed file:方法",
       "color": {
         "a": 1,
         "rgb": 7901340
@@ -130,6 +151,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 1.4019828977760582,
+  "scale": 1.5825166051087738,
   "close": false
 }
