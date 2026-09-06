@@ -8,7 +8,7 @@ created: {YYYY-MM-DD}
 updated: {YYYY-MM-DD}
 ---
 
-# {科目名} — 学习画像周报（第 {N} 周）
+# {科目名} - 学习画像周报（第 {N} 周）
 
 > 由 `tools/learning-profile/analyze.py` 程序化生成 + AI 补充解读。
 > 数据源：`assets/{subject}/personal/profiles/`（学生个人，可选提交）。

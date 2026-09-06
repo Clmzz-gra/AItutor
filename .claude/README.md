@@ -6,10 +6,10 @@
 
 项目级 skill 统一放在 `.dsh/skills/<kebab-name>/SKILL.md`：
 
-- `.dsh/skills/ai-study-method/SKILL.md` — 学习模式（图管理 + 大管线）
-- `.dsh/skills/tutor/SKILL.md` — 通用讲解
-- `.dsh/skills/exercise-generator/SKILL.md` — 习题生成（出题 + 答案折叠）
-- `.dsh/skills/visualization-interaction-builder/SKILL.md` — 可视化交互生成
+- `.dsh/skills/ai-study-method/SKILL.md` - 学习模式（图管理 + 大管线）
+- `.dsh/skills/tutor/SKILL.md` - 通用讲解
+- `.dsh/skills/exercise-generator/SKILL.md` - 习题生成（出题 + 答案折叠）
+- `.dsh/skills/visualization-interaction-builder/SKILL.md` - 可视化交互生成
 
 frontmatter 要求：`name`（kebab-case）+ `description`。
 

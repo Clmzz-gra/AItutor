@@ -29,12 +29,12 @@ bash tools/setup/bootstrap.sh
 > 需要走国际官方源时：PowerShell 加 `-Global`，bash 加 `--global`。
 
 ## 脚本会自动检查 / 安装什么
-1. **Git** —— 话题生命周期 / 防丢失
-2. **Python 3** —— `tools/doctor.py`、学习画像、演示工具
-3. **MinerU CLI** —— 教材 OCR / PDF → Markdown（`pip install mineru-open-api`）
-4. **Obsidian** —— 笔记与知识图谱（桌面端）
-5. **Obsidian CLI** —— AI 管理 vault 的通道（需在 Obsidian 界面开启一次：Settings → About → Command line interface）
-6. **AI harness（不做检测，按需自行安装）** —— 脚本只列出各 harness 官方网址（ZCode / Claude Code / Codex / dsh / Trae）；Claude Code / Codex 按需手动安装。
+1. **Git** -- 话题生命周期 / 防丢失
+2. **Python 3** -- `tools/doctor.py`、学习画像、演示工具
+3. **MinerU CLI** -- 教材 OCR / PDF → Markdown（`pip install mineru-open-api`）
+4. **Obsidian** -- 笔记与知识图谱（桌面端）
+5. **Obsidian CLI** -- AI 管理 vault 的通道（需在 Obsidian 界面开启一次：Settings → About → Command line interface）
+6. **AI harness（不做检测，按需自行安装）** -- 脚本只列出各 harness 官方网址（ZCode / Claude Code / Codex / dsh / Trae）；Claude Code / Codex 按需手动安装。
 
 > 稳健策略：MinerU CLI 依次尝试 清华/阿里/中科大/豆瓣/官方 多个源；Obsidian 依次尝试 winget → choco → scoop → 浏览器手动下载，只要一个成功即可。
 

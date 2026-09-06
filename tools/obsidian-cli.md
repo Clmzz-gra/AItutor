@@ -1,7 +1,7 @@
 # Obsidian CLI 使用指南（跨项目通用）
 
 > 官方命令行工具，Command-line control of Obsidian：<https://obsidian.md/cli>
-> 面向 **AI harness / 自动化脚本 / 高级用户**；不绑定具体项目——任何依赖 Obsidian vault 的项目可直接复制或链接本文。
+> 面向 **AI harness / 自动化脚本 / 高级用户**；不绑定具体项目--任何依赖 Obsidian vault 的项目可直接复制或链接本文。
 > 本文所有命令均在 **Windows 11 + Git Bash + Obsidian 1.13.7（installer 1.12.7）** 实测通过（2026-08-29）。
 > 本仓库内的用法唯一来源（M5）：其他文件只引用，不复制命令细节。
 
@@ -27,7 +27,7 @@ obsidian version   # 如：1.13.7 (installer 1.12.7)
 | 文件定位 | `file=<名称>`：按 wikilink 语义按名称解析（可省 .md）；`path=<folder/note.md>`：精确路径。**自动化一律用 `path=`**，不依赖索引、不怕重名 |
 | 引号 | 含空格的值必须加引号：`name="My Note"` |
 | 转义 | `content=` 值中 **`\n` = 换行，`\t` = 制表符**（字面量，由 CLI 还原为真实字符） |
-| active file 缺省 | 大部分命令省略 file/path 时作用于"当前打开的文件"——自动化不要依赖缺省，永远显式指定目标 |
+| active file 缺省 | 大部分命令省略 file/path 时作用于"当前打开的文件"--自动化不要依赖缺省，永远显式指定目标 |
 
 命令基本形式：
 
@@ -59,7 +59,7 @@ obsidian help <command>          # 查看单条命令的完整选项
 
 | 命令 | 作用 |
 |------|------|
-| `unresolved` | **坏链清单**（wikilink 指向不存在的文件）——AI 写完文章必查 |
+| `unresolved` | **坏链清单**（wikilink 指向不存在的文件）--AI 写完文章必查 |
 | `orphans` | 无入链的文章（孤立文章） |
 | `deadends` | 无出链的文章 |
 
@@ -92,7 +92,7 @@ obsidian orphans vault=V
 
 ### 3.6 高级 / 开发者（谨慎）
 
-`eval`（执行 JS）、`dev:cdp`、`dev:dom`、`dev:screenshot`、`dev:console`、`devtools`——能力强、破坏面大，自动化脚本默认不要用。另有 `history:*` / `sync:*` 系列可读取并恢复文件历史版本（依赖 Obsidian File Recovery / Sync）。
+`eval`（执行 JS）、`dev:cdp`、`dev:dom`、`dev:screenshot`、`dev:console`、`devtools`--能力强、破坏面大，自动化脚本默认不要用。另有 `history:*` / `sync:*` 系列可读取并恢复文件历史版本（依赖 Obsidian File Recovery / Sync）。
 
 ## 4. AI 创建笔记的标准回路（推荐固化）
 

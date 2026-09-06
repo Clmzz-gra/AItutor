@@ -1,4 +1,4 @@
-# 演示工具族（demo-tools）— 跨学科索引
+# 演示工具族（demo-tools）- 跨学科索引
 
 > "知识可视化·可交互·可实验"维度的工程落地，**跨学科**。
 > 生成规范见 `.dsh/skills/visualization-interaction-builder/SKILL.md`。
