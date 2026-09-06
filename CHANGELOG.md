@@ -5,6 +5,11 @@
 ### 规则
 - 表达库加粗惯例成文：每日外刊 / 阅读真题的原文中以**加粗**标出 Expression Library 收录的表达（每条在其"原文句子/用法"对应位置加粗一次 + 标题下图例），登记进 `asset-spec.md` §四.11/12 与两类模板
 
+### 规则（可视化演示）
+- 可视化交互生成 skill 升级至 2.1：新增**拓展 C：浏览器端可视化**（three.js / p5.js / d3.js）——当 Streamlit 视觉质感不足时，可选高质感浏览器端演示（3D 立体、创意动画、网页知识图谱）
+- 拓展 C 定义浏览器端工程结构（`package.json` / `src/core|ui|utils` / Vite）、技术选型（three / p5 / d3 三选一）、Node 前置要求，并把本 skill 的**教学正确性核心**（数值对照真值、解析值覆盖、测度加权、状态对象、单步推进、可复现）跨技术栈沿用
+- 默认技术栈（Streamlit + Plotly）保持为首选，浏览器端作为**明确追求视觉质感时**的进阶替代；选择需在工具与 `personal/README.md` 标注技术栈
+
 ### 学科
 - 恢复预设学科「实变函数与泛函分析」：重建 `rules/subjects/实变函数与泛函分析/`（config / case / capabilities / curriculum）与 `assets/实变函数与泛函分析/` 资产结构
 - 将 `E:/StudyHelper/math/real-functional-analysis` 中的 Ch1..Ch10 学习讲解包改名为 `Ch{N} {章名}.md` 替换实变泛函 seed，并同步迁移 `学科概览.md` 与 3 个被引用的概念澄清文件；`§` 开头的分节笔记按用户要求不迁移

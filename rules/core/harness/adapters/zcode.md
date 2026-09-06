@@ -20,3 +20,7 @@
 
 ## 每轮注入
 - ✅ `AGENTS.md` 每轮自动注入（2026-08-29 实测：P0/P1 新规则会话内可加载并执行）
+
+## 已知注意（免费模型）
+- **免费/弱模型（如 GLM-4.5-Flash）可能不严格遵循注入的 `AGENTS.md`**，而倾向去读根目录最显眼的 `README.md`。
+- 缓解：`README.md` 顶部已加「给 AI 的提示」指针，引导模型先读 `AGENTS.md`；若仍不生效，请在 ZCode 里确认「项目指令 / workspace instructions / AGENTS.md」注入开关已开启。
