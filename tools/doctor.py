@@ -47,6 +47,8 @@ EXCLUDE_TEXTBOOK = {"textbook"}
 KNOWN_TYPES = {
     "学科全景", "章", "节", "概念", "论文", "思考",
     "提问", "习题", "作业", "问题",
+    # 扩展类型（rules/core/asset-spec.md §一·五 已注册）
+    "每日外刊", "阅读真题",
 }
 
 
@@ -199,7 +201,8 @@ def check_unclosed_topics():
         return None, out.stderr.strip()
     topic_re = re.compile(r"\[TOPIC\s+(.+?)\]\[(OPEN|CLOSE)\]")
     opened: dict[str, str] = {}
-    for line in out.stdout.splitlines():
+    # git log 默认新→旧；OPEN/CLOSE 配对必须按 旧→新 顺序处理
+    for line in reversed(out.stdout.splitlines()):
         m = topic_re.search(line)
         if not m:
             continue
