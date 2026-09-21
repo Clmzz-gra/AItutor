@@ -81,6 +81,7 @@ _checkpoints/
 !assets/运筹学/seed/*.md
 !assets/数学分析/seed/*.md
 !assets/语法/seed/*.md
+!assets/高等代数/seed/*.md
 
 # 外部参考资料（第三方仓库克隆，不上传）
 _references/

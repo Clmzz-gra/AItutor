@@ -41,9 +41,15 @@
     "assets/雅思/seed/README.md",
     "assets/雅思/seed/textbook/README.md",
     "assets/实变函数与泛函分析/seed/textbook/",
+    "assets/实变函数与泛函分析/seed/_extra/",
     "assets/实变函数与泛函分析/seed/README.md",
     "assets/实变函数与泛函分析/seed/textbook/README.md",
     "assets/实变函数与泛函分析/personal/README.md",
-    "assets/实变函数与泛函分析/personal/demos/README.md"
+    "assets/实变函数与泛函分析/personal/demos/README.md",
+    "assets/运筹学/seed/textbook/",
+    "assets/运筹学/seed/README.md",
+    "assets/运筹学/seed/textbook/README.md",
+    "assets/运筹学/personal/README.md",
+    "assets/运筹学/personal/demos/README.md"
   ]
 }

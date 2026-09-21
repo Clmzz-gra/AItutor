@@ -29,6 +29,13 @@
       }
     },
     {
+      "query": "path:seed file:概念",
+      "color": {
+        "a": 1,
+        "rgb": 7901340
+      }
+    },
+    {
       "query": "path:seed file:整体认知",
       "color": {
         "a": 1,

@@ -21,10 +21,11 @@ GRAPH = ROOT / ".obsidian" / "graph.json"
 # - personal 类：高饱和 / 鲜艳，表示个人增量；同一高饱和体系内按文章类型用不同色相区分
 # 二次开发新增文章类型时，在此 PALETTE 追加对应 query 即可（见 asset-spec §一·五）。
 PALETTE = [
-    # seed：低饱和，按层级区分（seed 已无概念级节点，故不设概念色）
+    # seed：低饱和，按层级区分（学科全景 / 章 / 节 / 概念，见 init-spec §4 默认配色）
     ("path:seed file:学科概览", "#B0717A"),  # 学科全景：低饱和玫瑰
     ("path:seed file:Ch",       "#5C7A99"),  # 章：低饱和蓝
     ("path:seed file:Sec",      "#6B8E6B"),  # 节：低饱和绿
+    ("path:seed file:概念",      "#78909C"),  # 概念：低饱和灰蓝（seed 概念节点，2026-09-21 起启用）
     # seed 讲解包（多文件展开，属于 note）：00/01 为章级枢纽，02 主题为节级，M 方法为概念级
     ("path:seed file:整体认知", "#5C7A99"),  # 讲解包 00：章级枢纽（低饱和蓝）
     ("path:seed file:背景与动机", "#5C7A99"),  # 讲解包 01：章级（低饱和蓝）
